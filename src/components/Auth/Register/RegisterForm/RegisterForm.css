@@ -1,0 +1,58 @@
+.RegisterForm h3 {
+    line-height: 1.8em;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.Form {
+    display: block;
+    margin: 0 auto;
+    padding: 0 12px;
+    width: 34vw;
+}
+
+.RegisterLink {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 10px 0;
+}
+
+.Form button {
+    display: block;
+    margin: 0 auto;
+}
+
+.Registered {
+    color: red;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.Form button {
+    padding: 15px 20px;
+    display: block;
+    margin: 10px auto;
+    align-self: left;
+    background: black;
+    color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 500px){
+    .RegisterForm {
+        margin: 15px;
+        width: fit-content;
+    }
+
+    .RegisterForm h3 {
+        width: inherit;
+    }
+    .Form {
+        width: fit-content;
+        margin-left: 0;
+        width: 100%;
+    }
+}

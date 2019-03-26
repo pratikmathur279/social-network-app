@@ -1,0 +1,38 @@
+.InputError {
+    color: red;
+    margin: 10px 10px;
+    text-align: left;
+    margin-left: 90px;
+}
+
+.Input {
+    display: flex;
+    flex-direction: row;
+}
+
+.Label {
+    width: 120px;
+    text-transform: capitalize;
+}
+
+textarea{
+    width: 60vw;
+    height: 100px;
+    padding: 4px 10px;
+    font-size: 14px;
+    margin-left: 12px;
+    letter-spacing: 1px;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 6px;
+}
+
+@media (max-width: 500px){
+    textarea {
+        margin-left: 0;
+    }
+
+    .Label {
+        width: 80px
+    }
+}

@@ -1,0 +1,18 @@
+.Description {
+    display: block;
+    margin: auto; 
+    width: 80%;
+    padding-top: 20px;   
+    color: black;
+    line-height: 2em;
+    font-size: 18px;
+    color: #002D85;
+}
+
+@media (max-width: 500px){
+    .Description {
+        padding: 0px 20px;
+        width: fit-content;
+
+    }
+}

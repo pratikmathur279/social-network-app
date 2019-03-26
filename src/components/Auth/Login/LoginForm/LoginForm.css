@@ -1,0 +1,56 @@
+.LoginForm h3 {
+    line-height: 1.8em;
+    text-align: center;
+}
+
+.Form {
+    display: block;
+    margin: 0 auto;
+    width: 34vw;
+    padding: 0 12px;
+}
+
+.RegisterLink {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 10px 0;
+}
+
+.Form button {
+    display: block;
+    margin: 0 auto;
+}
+
+.EmailSent {
+    color: red;
+}
+
+.Form button {
+    padding: 15px 20px;
+    display: block;
+    margin: 15px auto;
+    align-self: left;
+    background: black;
+    color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 500px){
+    .LoginForm {
+        margin: 0px;
+        width: 100%;
+    }
+
+    .Form {
+        width: fit-content;
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px){
+    .LoginForm{
+        margin: 10px;
+    }
+}

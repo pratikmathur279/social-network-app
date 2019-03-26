@@ -1,0 +1,42 @@
+.ContactForm {
+    margin-left: 30vw; 
+    width: 49.5vw;
+    margin: 50px 0 50px 25vw;
+    text-align: center;
+}
+.ContactForm h3 {
+    line-height: 1.8em;
+}
+
+.Form {
+    margin-left: 3vw;
+    width: 42vw;
+}
+
+.EmailSent {
+    color: red;
+}
+
+button {
+    padding: 15px 20px;
+    margin-top: 10px;
+    align-self: left;
+    background: black;
+    color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 500px){
+    .ContactForm {
+        margin: 15px;
+        width: fit-content;
+    }
+
+    .ContactForm h3 {
+        width: inherit;
+    }
+    .Form {
+        width: fit-content;
+        margin-left: 0;
+    }
+}

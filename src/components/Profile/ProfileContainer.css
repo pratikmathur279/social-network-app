@@ -1,0 +1,8 @@
+.ProfileContainer {
+    display: block;
+    margin: 20px auto;
+    padding: 30px;
+    padding-bottom: 10px;
+    width: 40vw;
+    background: rgb(236, 236, 236);
+}

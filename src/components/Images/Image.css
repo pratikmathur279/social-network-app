@@ -1,0 +1,24 @@
+.Image {
+    display: block;
+    margin: 0 auto; 
+    width: fit-content;
+    /* padding-top: 40px;    */
+}
+
+.Image img {
+    width: 16vw;
+    height: auto;
+    border-radius: 50%;
+    border-width: 2px;
+}
+
+@media (max-width:500px){
+    .Image {
+        display: block;
+        width: 45%;
+    }
+    .Image img {
+        width: 45vw;
+        justify-content: center;
+    }
+}

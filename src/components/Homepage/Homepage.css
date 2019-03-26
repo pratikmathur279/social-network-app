@@ -1,0 +1,89 @@
+.Homepage {
+    display: flex;
+    flex-direction: column;
+}
+
+.Homepage p{
+    display: block;
+    margin: 0 auto; 
+    width: 300px;
+    padding-top: 40px;   
+    color: black;
+    line-height: 2em;
+    font-size: 18px;
+    color: grey;
+    opacity: 0.6;
+}
+
+.HexagonsContainer {
+    /* height: 75%; */
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.Container2{
+    display: flex;
+    flex-direction: row;
+    padding: 0 50px;
+    margin-bottom: 50px;
+}
+
+.IntroContainer {
+    width: 50%;
+}
+
+.SkillsContainer{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    padding: 25px 0;
+}
+.HomePageContainer {
+    width: 100%;
+    margin: auto;
+    position: relative;
+    height: 500px;
+    /* top: 55px; */
+    overflow: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: url("../../assets/Images/cover.png") center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-color: teal;
+}
+/* 
+@media (max-width: 768px){
+    .HexagonsContainer {
+        margin-left: 0;
+    }
+} */
+
+@media screen and (max-width: 500px){
+    .HomePageContainer {
+        background-size: 100%;
+        height: 300px;
+    }
+
+    .HexagonsContainer {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .Container2 {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .IntroContainer {
+        width: 100%;
+    }
+
+    .SkillsContainer{
+        width: 90%;
+    }
+}

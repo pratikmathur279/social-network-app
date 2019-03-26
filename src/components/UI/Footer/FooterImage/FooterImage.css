@@ -1,0 +1,11 @@
+.footerImage {
+    margin-top: 20px;
+    padding: 0 20px;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 30px;
+}
+
+.footerImage img {
+    width: 30px;    
+}

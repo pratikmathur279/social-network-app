@@ -1,0 +1,51 @@
+.InputError {
+    color: red;
+    margin: 0px 10px;
+    text-align: left;
+    margin-left: 90px;
+}
+
+.Input {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.Label {
+    text-transform: capitalize;
+    width: 80px;
+    text-align: right;
+}
+
+input{
+    width: 22vw;
+    padding: 2px 10px;
+    height: 30px;
+    margin-left: 12px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+    border-bottom: 1px solid grey;
+    margin-top: 6px;
+    /* border-bottom: 1px solid grey; */
+}
+
+@media (max-width: 500px){
+    input {
+        width: 50vw;
+        margin-left: 8px;
+    }
+
+    .Label {
+        display: none;
+        width: 80px;
+        text-align: justify
+    }
+}
+
+@media screen and (max-width: 375px){
+    input {
+        width: 55vw;
+        
+    }
+}

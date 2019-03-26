@@ -1,0 +1,17 @@
+.SkillsBar {
+    position: relative;
+    height: 30px;
+    width: 100%;
+    border-radius: 50px;
+    background: lightgray;
+    margin-top: 20px;
+    border: 1px hidden #333;
+}
+
+.SkillsBarContainer {
+    margin-top: 20px;
+    height: fit-content;
+    
+}
+
+@media (max-width: 500px){}

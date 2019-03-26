@@ -1,0 +1,35 @@
+.Footer{
+    /* width: 75%; */
+    /* margin-top: 50px; */
+    background-color: #40909a;
+    /* position: relative; */
+    width: 100%;
+    position: static;
+    bottom: 0;
+    padding: 0px;
+    margin-top: 0;
+    height: 120px;
+    overflow: none;
+    text-align: center;
+    font-family: Roboto;
+    align-items: center;
+}
+
+.FooterDiv{
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    /* text-align: center; */
+    /* align-items: center; */
+}
+
+.FooterContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* height: 300px; */
+}
+
+.FooterDiv span {
+    margin-left: 5px;
+}

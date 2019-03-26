@@ -1,0 +1,32 @@
+.WorkExperience {
+    padding: 50px 100px;
+}
+
+.WorkExperienceRow {
+    /* width: 100%; */
+    padding: 0 75px;
+    line-height: 1.4em;
+}
+
+.Header h1{
+    margin: 10px 0 20px 0;
+    padding: 15px;
+    border-bottom: 1px solid grey;
+}
+
+@media (max-width: 500px){
+    .WorkExperience{
+        padding: 15px;
+    }
+
+    .WorkExperienceRow {
+        padding: 0 5px;
+    }
+
+    .Header h1 {
+        padding: 0;
+        padding-bottom: 15px;
+        font-size: 26px;
+        text-align: center;
+    }
+}

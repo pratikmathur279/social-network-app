@@ -1,0 +1,44 @@
+.Projects{
+    /* width: 75%; */
+    /* margin-top: 50px; */
+    position: relative;
+    padding: 0px;
+    /* margin-top: 5vh; */
+    height: 380px;
+    overflow: none;
+    text-align: center;
+    align-items: center;
+}
+
+.ProjectDiv{
+    display: block;
+    margin: 0 auto;
+    /* margin: auto; */
+    width: fit-content;
+    text-align: center;
+    align-items: center;
+}
+
+.ProjectsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* height: 300px; */
+}
+
+.break {
+    display: none;
+}
+
+@media (max-width: 500px){
+    .Projects {
+        height: fit-content;
+        margin-top: 0px;
+        margin-bottom: 15px;
+    }
+    
+    .ProjectsContainer{
+        flex-direction: column;
+        padding-bottom: 15px;
+    }
+}
