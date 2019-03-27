@@ -31,9 +31,6 @@ console.log(event.pathParameters.email);
       if(element.email == event.pathParameters.email){
           exists = true;
       }
-      else {
-        exists = false;
-      }
     })
     console.log(exists);
     // create a response
