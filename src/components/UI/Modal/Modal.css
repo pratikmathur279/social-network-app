@@ -15,8 +15,8 @@
 
 @media (min-width: 600px) {
     .Modal {
-        width: 50%;
-        left: calc(45% - 250px);
+        width: 55%;
+        left: calc(40% - 250px);
         height: fit-content;
         top: 0%;
     }

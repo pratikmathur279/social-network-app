@@ -27,6 +27,7 @@ class AboutPageBuilder extends Component {
         else {
           state.loggedIn = false;
         }
+        localStorage.setItem('currentUser', user);
         this.setState(state);
     }
 

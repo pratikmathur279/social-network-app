@@ -22,6 +22,12 @@ class App extends Component {
   }
 
   componentWillMount(){
+    // sessionStorage.clear();
+    // localStorage.removeItem('currentUser');
+  }
+
+  componentWillUnmount(){
+    localStorage.clear();
     sessionStorage.clear();
   }
 
@@ -43,14 +49,13 @@ class App extends Component {
       <BrowserRouter>
       <div classes={classes.App}>
     
-          <div className="content">
+          <div className={classes.Content}>
               <Route exact path="/" component={() => <AuthBuilder login={this.state.login} />}/>
               <Route path="/register" component={RegisterBuilder} />
               <Route path="/home" component={SocialNetworkBuilder}/>
               <Route path="/profile" component={ProfileBuilder} />
               <Route path="/logout" component={Logout} />
           </div>
-        
         
         <Footer />
       </div>

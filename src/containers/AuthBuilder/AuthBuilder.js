@@ -10,7 +10,6 @@ import Actions from '../../actions/Actions';
 
 class AuthBuilder extends Component {
     constructor(props) {
-      console.log(props);
         super(props);
         this.state = {
             isFlipped: false,
@@ -39,6 +38,7 @@ class AuthBuilder extends Component {
 
       componentWillMount(){
         console.log(sessionStorage);
+        console.log(localStorage);
       }
 
       onClick(e) {

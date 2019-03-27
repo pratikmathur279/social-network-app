@@ -2,12 +2,10 @@
     /* width: 75%; */
     /* margin-top: 50px; */
     background-color: #40909a;
-    /* position: relative; */
+    position: relative;
     width: 100%;
-    position: static;
     bottom: 0;
     padding: 0px;
-    margin-top: 0;
     height: 120px;
     overflow: none;
     text-align: center;

@@ -2,12 +2,12 @@ import React, {PropTypes} from 'react';
 import classes from './TextInput.css';
 
 const TextInput = (props) => {
-    
+  console.log("textinput"+props.value);
     return (
         <div classes={classes.TextInput}>
           <div className={classes.Input}>
             <p htmlFor={props.name} className={classes.Label}>{props.name}</p>
-            <input onChange={props.onChange} placeholder={props.name} id={props.id} type="text" name={props.name} value={props.value} type={props.type}/> 
+            <input onChange={props.onChange} placeholder={props.name} id={props.id} type="text" name={props.name} value={props.value}/> 
           </div>
           <div>
             {props.errors && <p className={classes.InputError}>{props.errors[props.name]}</p>}

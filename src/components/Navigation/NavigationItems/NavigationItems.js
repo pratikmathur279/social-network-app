@@ -4,7 +4,6 @@ import classes from './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = (props) => {
-    console.log(props);
     const loggedIn = props.loggedIn;
     return (
         <div>
