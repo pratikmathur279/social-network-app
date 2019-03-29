@@ -3,14 +3,12 @@
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
+const params = {
+  TableName: process.env.FEED_TABLE,
+};
 
-module.exports.check = (event, context, callback) => {
-  const params = {
-    TableName: process.env.USERS_TABLE,
-  };
-
-console.log(event.pathParameters.email);
-  // fetch todo from the database
+module.exports.list = (event, context, callback) => {
+  // fetch all todos from the database
   dynamoDb.scan(params, (error, result) => {
     // handle potential errors
     if (error) {
@@ -18,21 +16,11 @@ console.log(event.pathParameters.email);
       callback(null, {
         statusCode: error.statusCode || 501,
         headers: { 'Content-Type': 'text/plain' },
-        body: 'Couldn\'t fetch the todo item.',
+        body: 'Couldn\'t fetch the todos.',
       });
       return;
     }
 
-    let exists = false;
-    // console.log(result.Items);
-    const data = (result.Items);
-    console.log(data.length);
-    data.forEach((element) => {
-      if(element.email == event.pathParameters.email){
-          exists = true;
-      }
-    })
-    console.log(exists);
     // create a response
     const response = {
       statusCode: 200,
@@ -40,7 +28,7 @@ console.log(event.pathParameters.email);
         'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
       },
-      body: exists,
+      body: JSON.stringify(result.Items),
     };
     callback(null, response);
   });

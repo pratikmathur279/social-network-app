@@ -7,6 +7,8 @@ plugins:
   - serverless-domain-manager
 
 custom:
+  secrets: ${file(secrets.json)}
+
   customDomain:
     domainName: data.pratikmathur.com
     basePath: ''
@@ -17,8 +19,10 @@ provider:
   name: aws
   runtime: nodejs8.10
   environment:
+    JWT_SECRET: ${self:custom.secrets.JWT_SECRET}
     USERS_TABLE: { "Ref": "UsersDynamoTable" } 
     USERS_ACTIVITY_TABLE: { "Ref": "UserActivityDynamoTable"}
+    FEED_TABLE: { "Ref": "FeedDynamoTable" }
     EMAIL: "pratikmathur279@gmail.com"
 
   iamRoleStatements:
@@ -33,6 +37,7 @@ provider:
       Resource: 
         - { "Fn::GetAtt": ["UsersDynamoTable", "Arn"] }
         - { "Fn::GetAtt": ["UserActivityDynamoTable", "Arn"] }
+        - { "Fn::GetAtt": ["FeedDynamoTable", "Arn"] }
 
     - Effect: "Allow"
       Action:
@@ -40,6 +45,25 @@ provider:
       Resource: "*"
 
 functions:
+#login user
+  login:
+    handler: auth/login.login
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+
+#register user
+  register:
+    handler: auth/AuthHandler.register
+    events:
+      - http:
+          path: register
+          method: post
+          cors: true
+
+
 #check if user exists(login)
   checkUser:
     handler: users/check.check
@@ -57,6 +81,24 @@ functions:
           path: users
           method: post
           cors: true          
+
+#create feed item
+  createNote:
+    handler: feed/create.create
+    events:
+      - http:
+          path: feed
+          method: post
+          cors: true
+
+#list feed
+  listFeed:
+    handler: feed/list.list
+    events:
+      - http:
+          path: feed
+          method: get
+          cors: true
 
 #get user
   getUser:
@@ -129,3 +171,20 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:service}-userActivity
+      
+    FeedDynamoTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:service}-feed

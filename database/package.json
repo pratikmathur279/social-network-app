@@ -5,6 +5,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs-then": "^1.0.1",
+    "jsonwebtoken": "^8.5.1",
     "serverless-domain-manager": "^3.1.0",
     "uuid": "^2.0.3"
   }

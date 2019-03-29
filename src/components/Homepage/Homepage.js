@@ -1,39 +1,30 @@
 import React from 'react';
 
 import classes from './Homepage.css';
-import HomePageContainer from '../Homepage/HomepageContainer/HomepageContainer';
-import SkillsBar from '../Homepage/SkillsBar/SkillsBar';
-import HexagonsContainer from '../UI/HexagonsContainer/HexagonsContainer';
-import IntroContainer from '../Homepage/IntroContainer/IntroContainer';
+import Feed from '../Feed/Feed';
 
 const Homepage = (props) => {
-    
+    const buildItem = (item) => {
+        return(
+            <Feed key={item.id} item={item}/>
+        );
+    }
+
     return(
         <div className={classes.Homepage}>
-            <div className={classes.HomePageContainer}>
-                <HomePageContainer/>
-            </div>
-            <div className={classes.HexagonsContainer}>
-                {props.hexagons.map((row, i)=> {
-                    return(
-                        <HexagonsContainer key={row.id}
-                        row={i}
-                        hexagons={row}
-                    />
-                    )
-                })}
-            </div>
-            
-            <div className={classes.Container2}>
-                <div className={classes.IntroContainer}>
-                    <IntroContainer image={props.image}/>
+            <div className={classes.FeedContainer}>
+                
+                <div className={classes.feedCount}>
+                    <p>{props.feed.length} notes</p>
+                    <div className={classes.CreateItem}>
+                        <button onClick={props.onClick}>Create Note</button>
+                    </div>
+                    
                 </div>
-                <div className={classes.SkillsContainer}>
-                    <SkillsBar skills={props.skills}/>
-                </div>
+                {props.feed.map(buildItem)}
             </div>
         </div>
-    )
+    );
 }
 
 export default Homepage;

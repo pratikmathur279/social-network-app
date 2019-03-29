@@ -40,6 +40,7 @@ class ProfileBuilder extends Component {
             state.id = data.id;
             state.profiledata.id = data.id;
             state.loading = false;
+            console.log(state);
             this.setState(state);
         });
     }
@@ -86,10 +87,10 @@ class ProfileBuilder extends Component {
             return (
                 <div>
                     <Layout loggedIn={this.state.loggedIn} />
-                    {this.state.loading && <Loading />}  
-                        <Auxiliary>
-                            {this.getSession()}
-    
+                    {this.getSession()}
+                    {this.state.loading ? <Loading /> 
+                    :
+                    <Auxiliary>
                             <Modal show={this.state.showProject} modalClosed={this.closeModalHandler}>
                                 <EditProfile 
                                     onChange={this.handleChange} 
@@ -99,6 +100,8 @@ class ProfileBuilder extends Component {
                         
                             <ProfileContainer loading={this.state.loading} onClick={this.onClick} state={this.state} />
                         </Auxiliary>
+                    }  
+                        
                 </div>
                     
             );

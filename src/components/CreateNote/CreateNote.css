@@ -1,0 +1,15 @@
+.CreateNote {
+    /* padding: 0 30px 20px 30px; */
+    padding: 20px 0;
+    /* text-align: center; */
+}
+
+.CreateNoteContainer {
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.CreateNoteContainer button{
+    margin-top: 15px;
+}

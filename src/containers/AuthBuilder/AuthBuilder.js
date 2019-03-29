@@ -47,7 +47,7 @@ class AuthBuilder extends Component {
             let state = Object.assign({}, this.state);
            
             let user = this.state.loginFormControls;
-            this.actions.checkIfUserExists(user, (data)=> {
+            this.actions.loginUser(user, (data, err)=> {
                 if(data){
                     state.loginFormControls = state.loginInitialState;
             
@@ -58,7 +58,7 @@ class AuthBuilder extends Component {
                     this.setRedirect(state);
                 }
                 else {
-                  state.errors.email = "Email Address does not exist!";
+                  state.errors.email = "Check your credentials";
                   state.errors.length += 1;
                   this.setState(state);
                 }
@@ -104,7 +104,6 @@ class AuthBuilder extends Component {
       if (this.state.redirect) {
         console.log("redirect");
         return <Redirect to='/home' />
-        this
       }
     }
 
