@@ -22,7 +22,6 @@ class Actions {
       }
     
       updateProfileImageFeed(data, callback){
-            console.log(data);
             axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateImageFeed/${data.email}`, data, { crossDomain: true })
             .then((res)=> {
                   console.log(res.data);
