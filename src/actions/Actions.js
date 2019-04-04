@@ -9,7 +9,34 @@ class Actions {
                   callback(res);
             });      
       }
+
+      updateProfileImage(files, callback){
+            const formData = new FormData();
+            formData.append('myImage',files);
+        
+            axios.post("http://localhost:3001/image-upload",formData)
+            .then((res)=> {
+                  console.log(res);
+                  callback(res);
+            });     
+      }
     
+      updateProfileImageFeed(data, callback){
+            axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateImageFeed/${data.email}`, data, { crossDomain: true })
+            .then((res)=> {
+                  console.log(res.data);
+            });
+      }
+
+      updateProfile(userData, callback){
+            // console.log(userData.id);
+            axios.put(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userProfile/${userData.id}`, userData, { crossDomain: true })
+            .then((res)=> {
+                  console.log(res.data);
+                  callback(res);
+            })      
+      }
+
       createUserActivity(user, callback){
             axios.post('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userActivity', user, { crossDomain: true })
             .then((res)=> {
@@ -19,6 +46,13 @@ class Actions {
       }
       setLoggedIn(user, callback){
 
+      }
+
+      getUserFeed(email, callback){
+            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/feed/${email}`, { crossDomain: true})
+            .then((res)=> {
+                  callback(res);
+            });
       }
 
       createNote(note, callback){

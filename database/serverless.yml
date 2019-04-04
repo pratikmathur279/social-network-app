@@ -100,6 +100,24 @@ functions:
           method: get
           cors: true
 
+#update feed image for profiles
+  updateImageFeed: 
+    handler: feed/updateImage.update
+    events: 
+      - http: 
+          path: updateImageFeed/{email}
+          method: post
+          cors: true
+
+#get feed for user 
+  getUserFeed:
+    handler: feed/getUserFeed.list
+    events:
+      - http:
+          path: feed/{email}
+          method: get
+          cors: true
+
 #get user
   getUser:
     handler: users/get.get  
@@ -127,6 +145,15 @@ functions:
           method: put
           cors: true
 
+#update user profile
+  updateProfile:
+    handler: users/updateProfile.update
+    events:
+      - http: 
+          path: userProfile/{id}
+          method: put
+          cors: true
+                  
 #get user activity
   getUserActivity:
     handler: users/getUserActivity.getUserActivity

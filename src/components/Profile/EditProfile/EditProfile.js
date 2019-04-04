@@ -6,7 +6,7 @@ const EditProfile = (props) => {
     return(
         <div className={classes.EditProfile}>
             <h1>Edit Profile</h1>
-            <EditProfileForm onChange={props.onChange} updateProfile={props.updateProfile} profiledata={props.profiledata}/>
+            <EditProfileForm uploadImage={props.uploadImage} onChange={props.onChange} updateProfile={props.updateProfile} profiledata={props.profiledata} image={props.profile.image} />
         </div>
     );
 }

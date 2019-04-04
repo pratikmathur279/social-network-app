@@ -6,16 +6,15 @@ import Loading from '../../components/UI/Loading/Loading';
 import Actions from '../../actions/Actions';
 import Modal from '../../components/UI/Modal/Modal';
 import CreateNote from '../../components/CreateNote/CreateNote';
-import { Redirect, Route, BrowserRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-import pratik from '../../assets/Images/pratik.jpg';
 import Homepage from '../../components/Homepage/Homepage';
 
 class SocialNetworkBuilder extends Component {
     constructor(){
         super();
         this.state = {
-            image: pratik,
+            image: '',
             loading: true,
             showModal: false,
             loggedIn: false,
@@ -38,7 +37,7 @@ class SocialNetworkBuilder extends Component {
         let state = Object.assign({}, this.state);
         const user = sessionStorage.getItem('currentUser');
         if(user){
-            state.loggedIn = true,
+            state.loggedIn = true;
             state.currentUser = user;
         }
         else {
@@ -49,10 +48,10 @@ class SocialNetworkBuilder extends Component {
         this.actions.getUser(user, (data)=>{
             state.note.name = data.name;
             state.note.email = data.email;
-            console.log(state.note);
+            state.note.image = data.image;
             this.getFeed((data)=>{
                 state.feed = data;
-                console.log(state.feed.length);
+                console.log(state.feed);
                 state.loading = false;
                 this.setState(state);
             });

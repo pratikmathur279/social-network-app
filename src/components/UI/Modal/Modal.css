@@ -2,21 +2,26 @@
     position: fixed;
     z-index: 500;
     background-color: white;
-    width: 80%;
+    width: 90%;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
-    /* padding: 16px; */
-    left: 10%;
+    left: 5%;
     height: fit-content;
     top: 10%;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
 }
 
+.CloseButton {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
 @media (min-width: 600px) {
     .Modal {
-        width: 55%;
-        left: calc(40% - 250px);
+        width: 65%;
+        left: calc(35% - 250px);
         height: fit-content;
         top: 0%;
     }

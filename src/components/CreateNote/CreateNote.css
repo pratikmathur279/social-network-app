@@ -1,7 +1,5 @@
 .CreateNote {
-    /* padding: 0 30px 20px 30px; */
     padding: 20px 0;
-    /* text-align: center; */
 }
 
 .CreateNoteContainer {
@@ -12,4 +10,11 @@
 
 .CreateNoteContainer button{
     margin-top: 15px;
+}
+
+@media screen and (max-width: 500px){
+    .CreateNote h1{
+        text-align: center;
+    }
+
 }

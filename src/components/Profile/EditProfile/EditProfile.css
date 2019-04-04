@@ -1,7 +1,22 @@
 .EditProfile {
     padding: 10px;
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    /* width: 100px; */
 }
 
 .EditProfile h1{
     text-align: center;
+}
+
+@media screen and (max-width: 500px){
+    .EditProfile {
+        margin: 0;
+        width: 95%;
+    }
+
+    .EditProfile h1 {
+        font-size: 22px;
+    }
 }

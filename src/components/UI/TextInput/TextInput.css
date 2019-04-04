@@ -9,11 +9,12 @@
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+    margin-right: 10px;
 }
 
 .Label {
     text-transform: capitalize;
-    width: 80px;
+    width: 60px;
     text-align: right;
 }
 
@@ -30,22 +31,26 @@ input{
     /* border-bottom: 1px solid grey; */
 }
 
-@media (max-width: 500px){
+@media screen and (max-width: 500px){
+    .Input {
+        flex-direction: column;
+        margin-top: 0px;
+    }
+    
     input {
-        width: 50vw;
+        width: 70vw;
         margin-left: 8px;
+        margin-bottom: 5px;
     }
 
     .Label {
         display: none;
-        width: 80px;
-        text-align: justify
     }
 }
 
-@media screen and (max-width: 375px){
+/* @media screen and (max-width: 375px){
     input {
         width: 55vw;
         
     }
-}
+} */

@@ -11,12 +11,13 @@
 }
 
 .Label {
-    width: 120px;
+    width: 60px;
     text-transform: capitalize;
+    text-align: right;
 }
 
 textarea{
-    width: 60vw;
+    /* width: 22vw; */
     height: 100px;
     padding: 4px 10px;
     font-size: 14px;
@@ -25,14 +26,28 @@ textarea{
     border: none;
     border-bottom: 1px solid grey;
     margin-top: 6px;
+    resize: none
 }
 
-@media (max-width: 500px){
-    textarea {
-        margin-left: 0;
+@media screen and (max-width: 500px){
+    
+    .Input {
+        flex-direction: column;
     }
+    /* input {
+        width: 75vw;
+        margin-left: 8px;
+        margin-bottom: 5px;
+    } */
 
     .Label {
-        width: 80px
+        display: none;
+        width: 80px;
+        margin: 0;
+        margin-left: 15px;
+        text-align: justify
+    }
+    .Input textarea {
+        width: 70vw;
     }
 }

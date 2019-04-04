@@ -15,10 +15,10 @@
 @media (max-width:500px){
     .Image {
         display: block;
-        width: 45%;
+        width: fit-content;
     }
     .Image img {
-        width: 45vw;
+        width: 40vw;
         justify-content: center;
     }
 }

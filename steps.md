@@ -12,3 +12,7 @@ npm run build && aws s3 sync /Users/pratik/Documents/my-website/build s3://socia
 
 to fix cors,
 enable from serverless framework
+
+
+
+static/media/[name].[hash:8].[ext]

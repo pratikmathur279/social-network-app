@@ -1,3 +1,68 @@
 .Form {
-    padding-left: 50px;
+    padding-left: 10px;
+    margin: 20px 0;
+}
+
+.File {
+    border: none;
+    /* text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: fit-content; */
+}
+
+.FormDiv {
+    display: flex;
+    flex-direction: row;
+}
+input[type=text]{
+    width: 24vw;
+}
+
+textarea {
+    width: 24vw;
+
+}
+.Form img {
+    margin-bottom: 20px;
+}
+
+.Form button {
+    margin-top: 20px;
+    background: #0154A3;
+    display: block;
+    margin: 20px auto;
+    color: white;
+    padding: 10px;
+}
+
+.EditProfileForm textarea {
+    width: 22vw;
+}
+
+@media screen and (max-width: 500px){
+    .EditProfileForm {
+        width: 100%;
+    }
+    
+    .EditProfileForm textarea {
+        width: 70vw;
+    }
+
+    .FormDiv {
+        flex-direction: column;
+    }
+
+    .File{
+        margin-bottom: 5px;
+    }
+    .Form{
+        padding: 0;
+        margin: 0;
+    }
+
+    .Form .Image {
+        display: block;
+        margin: 0 auto;
+    }
 }

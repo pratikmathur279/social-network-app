@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route, BrowserRouter, Redirect } from "react-router-dom";
+import { Route, BrowserRouter, Redirect, Switch } from "react-router-dom";
 
 import classes from './App.css';
 
@@ -8,6 +8,7 @@ import AuthBuilder from './containers/AuthBuilder/AuthBuilder';
 import SocialNetworkBuilder from './containers/SocialNetworkBuilder/SocialNetworkBuilder';
 import RegisterBuilder from './containers/RegisterBuilder/RegisterBuilder';
 import ProfileBuilder from './containers/ProfileBuilder/ProfileBuilder';
+import NotFoundComponent from './containers/NotFoundComponent/NotFoundComponent';
 import Logout from './components/Auth/Logout/Logout';
 import Footer from '../src/components/UI/Footer/Footer';
 
@@ -103,11 +104,14 @@ class App extends Component {
       <div classes={classes.App}>
     
           <div className={classes.Content}>
+            <Switch>
               <Route exact path="/" component={() => <AuthBuilder login={this.state.login} />}/>
               <Route path="/register" component={RegisterBuilder} />
               <Route path="/home" component={SocialNetworkBuilder}/>
               <Route path="/profile" component={ProfileBuilder} />
               <Route path="/logout" component={Logout} />
+              <Route path="*" component={NotFoundComponent} />
+              </Switch>
           </div>
         
         <Footer />

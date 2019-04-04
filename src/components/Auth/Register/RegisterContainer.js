@@ -8,7 +8,7 @@ const RegisterContainer = (props) => {
     return(
         <div className={classes.RegisterContainer}>
 
-            <RegisterForm registered={props.registered} errors={props.errors} registerFormControls={props.registerFormControls} onChange={props.onChange} onClick={props.onClick} />
+            <RegisterForm loading={props.loading} registered={props.registered} errors={props.errors} registerFormControls={props.registerFormControls} onChange={props.onChange} onClick={props.onClick} />
         </div>
     )
 }

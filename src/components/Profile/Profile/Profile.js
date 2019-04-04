@@ -4,9 +4,11 @@ import classes from './Profile.css';
 import Image from '../../Images/Image';
 
 const Profile = (props) => {
+    console.log(props.state.profile);
+    const img = require(`../../../../build/static/media/${props.state.profile.image}`);
     return(
         <div className={classes.Profile}>
-            <Image src={props.state.image} alt={props.alt} />
+            <Image src={img} alt={props.alt} />
             <h3>{props.state.profile.name}</h3>
             <p>{props.state.profile.email}</p>
             <p>{props.state.profile.bio}</p>
@@ -16,4 +18,5 @@ const Profile = (props) => {
 }
 
 export default Profile;
+
 

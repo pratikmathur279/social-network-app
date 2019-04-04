@@ -1,79 +1,51 @@
-const express = require('express');
+const express = require('express')
+const sls = require('serverless-http')
 const app = express();
-const request = require('request');
-const port = process.env.PORT || 3005;
-const uuid = require('uuid');
 
-var AWS = require('aws-sdk');
-// Set the region 
-AWS.config.update({region: 'us-east-1'});
-
-// Create the DynamoDB service object
-var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-
-
-app.listen(port, () => {
-    console.log('Server running on ' + port);
-});
-
+const port = 3001;
 const bodyParser = require('body-parser');
+    const multer = require('multer');
+    const uuidv4 = require('uuid/v4');
+    const path = require('path');
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+    let newFilename = '';
+    // configure storage
+    const storage = multer.diskStorage({
+      destination: (req, file, cb) => {
+        /*
+          Files will be saved in the 'uploads' directory. Make
+          sure this directory already exists!
+        */
+        cb(null, '../build/static/media');
+      },
+      filename: (req, file, cb) => {
+        /*
+          uuidv4() will generate a random ID that we'll use for the
+          new filename. We use path.extname() to get
+          the extension from the original file name and add that to the new
+          generated ID. These combined will create the file name used
+          to save the file on the server and will be available as
+          req.file.pathname in the router handler.
+        */
+        newFilename = `${uuidv4()}${path.extname(file.originalname)}`;
+        cb(null, newFilename);
+      },
+    });
+    // create the multer instance that will be used to upload/save the file
+    const upload = multer({ storage });
 
-app.all('/*', function (request, response, next) {
-    response.header("Access-Control-Allow-Origin", "*");
-    response.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
-    response.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept');
-    if (request.method == 'OPTIONS') {
-        response.status(200).end();
-    } else {
-        next();
-    }
-});
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/users', function(req, res){
-    var params = {
-        TableName: 'social-network-app-users',
-      };
-      
-      // Call DynamoDB to add the item to the table
-      ddb.scan(params, function(err, data) {
-        if (err) {
-          console.log("Error", err);
-        } else {
-          console.log(data.Items[0].email);
-        }
-      });
-});
+    app.listen(port, () => console.log(`Server listening on port ${port}`));
 
-app.post('/users', function(req, res){
-    console.log(req.body.email);
-    const timestamp = new Date().getTime().toString();
-
-    var params = {
-        TableName: 'social-network-app-users',
-        Item: {
-            'id': {S: uuid.v1()},
-            'email': {S: req.body.email},
-            'password': {S: req.body.password},
-            'createdAt': {S : timestamp}
-        }
-      };
-      
-      // Call DynamoDB to add the item to the table
-      ddb.putItem(params, function(err, data) {
-        if (err) {
-          console.log("Error", err);
-        } else {
-        //   console.log(data);
-        res.send(req.body.email);
-        }
-      });
-});
-
-module.exports = app;
-
-
-
+    app.post('/image-upload', upload.single('myImage'), (req, res) => {
+      /*
+        We now have a new req.file object here. At this point the file has been saved
+        and the req.file.filename value will be the name returned by the
+        filename() function defined in the diskStorage configuration. Other form fields
+        are available here in req.body.
+      */
+      // res.data(newFilename);
+      res.send(JSON.stringify(newFilename));
+    });

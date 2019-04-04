@@ -33,6 +33,7 @@ class AuthBuilder extends Component {
             errors: {},
             currentUser: {email: ''},
             loggedIn: false,
+            loading: false,
             registered: false
         };
         this.actions = new Actions();
@@ -50,6 +51,8 @@ class AuthBuilder extends Component {
       onClick(e) {
         if(this.valid()){
           let state = Object.assign({}, this.state);
+          state.loading = true;
+          this.setState(state);
           let registerUser = state.registerFormControls;
           console.log(registerUser);
           this.actions.checkIfUserExists(registerUser, (data)=> {
@@ -59,6 +62,7 @@ class AuthBuilder extends Component {
                         state.registerFormControls = state.registerInitialState;
                         state.registered = true;
                         state.errors.email = '';
+                        state.loading = false;
                         this.setState(state);
                     });
                   });  
@@ -121,7 +125,6 @@ class AuthBuilder extends Component {
       if (this.state.redirect) {
         console.log("redirect");
         return <Redirect to='/home' />
-        this
       }
     }
 
@@ -130,8 +133,6 @@ class AuthBuilder extends Component {
             <Auxiliary>
               <Layout loggedIn={this.state.loggedIn} />
 
-                {/* <h3>{this.state.currentUser.email}</h3> */}
-                {/* {this.renderRedirect()} */}
                 <RegisterContainer 
                   {...this.state}
                   onChange={this.onChange}

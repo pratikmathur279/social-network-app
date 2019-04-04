@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom';
 import Modal from '../../components/UI/Modal/Modal';
 import pratik from '../../assets/Images/pratik.jpg';
 import Actions from '../../actions/Actions';
+import UserFeed from '../../components/Profile/UserFeed/UserFeed';
 import EditProfile from '../../components/Profile/EditProfile/EditProfile';
 
 class ProfileBuilder extends Component {
@@ -20,6 +21,7 @@ class ProfileBuilder extends Component {
             loading: true,
             profile: {},
             profiledata: {},
+            initialState : {},
             showProject: false
         }; 
         this.onClick = this.onClick.bind(this);
@@ -28,20 +30,26 @@ class ProfileBuilder extends Component {
         this.openModalHandler = this.openModalHandler.bind(this);
         this.closeModalHandler = this.closeModalHandler.bind(this);
         this.updateProfile = this.updateProfile.bind(this);
+        this.checkAttributes = this.checkAttributes.bind(this);
     }
 
-    componentDidMount(){
+    
+    componentWillMount(){
         console.log("mounted");
         let state = Object.assign({}, this.state);
         const user = localStorage.getItem('currentUser');
        
          this.actions.getUser(user, (data)=> {
             state.profile = data ;
+            state.profiledata.email = data.email;
             state.id = data.id;
             state.profiledata.id = data.id;
-            state.loading = false;
-            console.log(state);
-            this.setState(state);
+            this.actions.getUserFeed(state.profiledata.email, (res) => {
+                state.profile.feed = res.data;
+                state.profile.feedCount = res.data.length;
+                state.loading = false;
+                this.setState(state);
+            });
         });
     }
 
@@ -56,16 +64,66 @@ class ProfileBuilder extends Component {
         this.setState({showProject: false});
     }
 
+    checkAttributes(){
+        let state = Object.assign({}, this.state);
+
+        console.log('here');
+        if(!state.profiledata.hasOwnProperty('name') || state.profiledata.name.length <1){
+            state.profiledata.name = state.profile.name;
+        }
+        if(!state.profiledata.hasOwnProperty('image')){
+            state.profiledata.image = state.profile.image;
+        }        
+        if(!state.profiledata.hasOwnProperty('mobile') || state.profiledata.mobile.length <1){
+            state.profiledata.mobile = state.profile.mobile;
+        }
+        if(!state.profiledata.hasOwnProperty('bio') || state.profiledata.bio.length <1){
+            state.profiledata.bio = state.profile.bio;
+        }
+        this.setState(state);
+
+        return true;
+    }
+
     updateProfile = () => {
-        console.log(this.state);
+ 
+        if(this.state.files){
+            console.log("files exist");
+            this.actions.updateProfileImage(this.state.files, (data) => {
+                let state = Object.assign({}, this.state);
+                state.profiledata.image = data.data;
+                
+                if(this.checkAttributes()){
+                    this.actions.updateProfile(state.profiledata, (data)=> {
+                        // window.location;
+                        this.forceUpdate();
+                    });
+    
+                }
+            });
+        }
+        else {
+            console.log("no file");
+            
+            if(this.checkAttributes()){
+                this.actions.updateProfile(this.state.profiledata, (data)=> {
+                    window.location.reload();
+                });    
+            }
+        }
     }
 
     handleChange(e){
         const key = e.target.name;
         const value = e.target.value;
-        
         let state = Object.assign({}, this.state);
-        state.profiledata[key] = value;
+        if(key === 'profile-image'){
+            console.log(e.target.files[0]);
+            state.files = e.target.files[0]; 
+        }
+        if(key !== 'email'){
+            state.profiledata[key] = value;
+        }
 
         this.setState(state);
     }
@@ -82,7 +140,8 @@ class ProfileBuilder extends Component {
 
     onClick(){
           this.openModalHandler();
-      }
+    }
+
     render () {
             return (
                 <div>
@@ -95,10 +154,14 @@ class ProfileBuilder extends Component {
                                 <EditProfile 
                                     onChange={this.handleChange} 
                                     updateProfile={this.updateProfile} 
+                                    uploadImage = {this.uploadImage}
                                     {...this.state} />
                             </Modal>
                         
                             <ProfileContainer loading={this.state.loading} onClick={this.onClick} state={this.state} />
+                            <UserFeed 
+                                {...this.state}
+                            />
                         </Auxiliary>
                     }  
                         

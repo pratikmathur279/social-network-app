@@ -1,16 +1,16 @@
 import React from 'react';
 
-import pratik from '../../assets/Images/pratik.jpg';
 import classes from './Feed.css'
-import Image from '../Images/Image';
 
 const Feed = (props) => {
+    const image = require(`../../../build/static/media/${props.item.image}`)
     return (
         <div className={classes.Feed}>
             <div className={classes.User}>
-                <img className={classes.Image} src={pratik} />
+                <img className={classes.Image} src={image} />
                 <div className={classes.UserData}>
                     <h4>{props.item.name}</h4>
+                    <p>{props.item.email}</p>
                     <p>{props.item.date}</p>
                 </div>
             </div>

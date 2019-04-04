@@ -4,7 +4,6 @@ import Auxiliary from '../Auxiliary';
 import classes from './Layout.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
-import AboutDrawer from '../../components/UI/AboutDrawer/AboutDrawer';
 
 class Layout extends Component {
     constructor(props){

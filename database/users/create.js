@@ -22,6 +22,8 @@ module.exports.create = (event, context, callback) => {
         id: uuid.v1(),
         email: data.email,
         name: data.name,
+        image: 'no-image.png',
+        bio: 'This is a temporary bio',
         mobile: data.mobile,
         password: data.password,
         passwordHash: hashPassword,

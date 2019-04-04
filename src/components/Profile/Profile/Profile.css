@@ -6,3 +6,9 @@
 .Profile p {
     margin: 8px;
 } 
+
+@media screen and (max-width: 500px){
+    .Profile  {
+        padding-top: 20px;
+    }
+}

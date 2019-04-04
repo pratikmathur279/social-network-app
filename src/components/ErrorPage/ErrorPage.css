@@ -1,0 +1,22 @@
+.ErrorPage {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+
+}
+.ErrorPage img {
+    width: 50vw;
+    display: block;
+    margin: 30px auto;
+    border: none;
+}
+
+@media screen and (max-width: 500px) {
+    .ErrorPage {
+        padding: 0;
+        width: 100%;
+    }
+    .ErrorPage img {
+        /* width: 65vw; */
+    }
+}

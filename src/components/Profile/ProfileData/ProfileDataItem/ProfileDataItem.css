@@ -1,0 +1,10 @@
+.ProfileDataItem {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    text-align: center;
+}
+
+.ProfileDataItem p {
+    margin: 7px 0;
+}

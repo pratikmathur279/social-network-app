@@ -20,6 +20,7 @@ module.exports.create = (event, context, callback) => {
       id: uuid.v1(),
       email: data.email,
       name: data.name,
+      image: data.image,
       message: data.message,
       date: date,
       createdAt: timestamp,

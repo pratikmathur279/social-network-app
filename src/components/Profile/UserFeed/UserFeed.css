@@ -1,0 +1,9 @@
+.UserFeed {
+    width: 60vw;
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    /* margin: 0 10px; */
+    margin-bottom: 20px;
+    background: rgb(236, 236, 236);
+}

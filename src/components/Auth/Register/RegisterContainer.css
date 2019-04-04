@@ -11,12 +11,7 @@
 
 @media screen and (max-width: 500px){
     .RegisterContainer {
-        width: 65%;
-    }
-}
-
-@media screen and (max-width: 375px){
-    .RegisterContainer{
-        width: 80%;
+        width: fit-content;
+        padding: 0;
     }
 }
