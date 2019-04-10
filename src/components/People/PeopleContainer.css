@@ -1,0 +1,10 @@
+.Container {
+    width: 45vw;
+    display: block;
+    margin: 20px auto;
+}
+
+.PeopleContainer {
+    padding: 30px;
+    background: rgb(236, 236, 236);
+}

@@ -13,12 +13,8 @@ class NotFoundComponent extends Component {
     }
 
     componentDidMount(){
-        console.log("here");
         setTimeout(() => {
-            // this.setState({ redirect: true })
-            console.log('redirect');
-            // <Redirect to='/home' />
-            // window.location.assign('/home');
+            window.location.assign('/home');
         }, 5000);
     }
 

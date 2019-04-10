@@ -4,7 +4,6 @@ import classes from './ProfileData.css';
 import ProfileDataItem from './ProfileDataItem/ProfileDataItem';
 
 const ProfileData = (props) => {
-    console.log(props);
     return(
         <div className={classes.ProfileData} >
             <ProfileDataItem value="Notes" count={props.profile.feedCount} />

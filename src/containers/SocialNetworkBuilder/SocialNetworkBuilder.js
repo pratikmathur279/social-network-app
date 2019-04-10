@@ -51,7 +51,6 @@ class SocialNetworkBuilder extends Component {
             state.note.image = data.image;
             this.getFeed((data)=>{
                 state.feed = data;
-                console.log(state.feed);
                 state.loading = false;
                 this.setState(state);
             });
@@ -69,17 +68,6 @@ class SocialNetworkBuilder extends Component {
     valid(){
         let state = Object.assign({}, this.state);
         state.errors = {length: 0};
-        console.log(state.note);
-
-        // if((state.note.email === '' && state.note.hasOwnProperty('email')) || !state.note.hasOwnProperty('email')){
-        //     state.errors.email = "Please enter an email.";
-        //     console.log("here");
-        //     state.errors.length += 1;
-        // }
-        // if(state.note.name == ''){
-        //     state.errors.name = "Please enter a name.";
-        //     state.errors.length += 1;
-        // }
         if(state.note.message == ''){
             state.errors.message = "Please enter a message.";
             state.errors.length += 1;
@@ -89,10 +77,8 @@ class SocialNetworkBuilder extends Component {
     }
 
     createNote() {
-        const temp = this.valid()
-        console.log(temp);
+        const temp = this.valid();
         if(temp){
-            console.log(this.state.note);
             this.actions.createNote(this.state.note, (data)=> {
                 this.getFeed((data1)=>{
                     let state = Object.assign({}, this.state);
@@ -113,13 +99,10 @@ class SocialNetworkBuilder extends Component {
         if(key === 'message'){
             state.note[key] = value;
         }
-        console.log(state);
-
         this.setState(state);
     }
 
     onClick(){
-        console.log("clicked");
         this.openModalHandler();
     }
     

@@ -49,6 +49,7 @@ measureFileSizesBeforeBuild(paths.appBuild)
     fs.emptyDirSync(paths.appBuild);
     // Merge with the public folder
     copyPublicFolder();
+    // copyAssetsFolder();
     // Start the webpack build
     return build(previousFileSizes);
   })
@@ -148,3 +149,10 @@ function copyPublicFolder() {
     filter: file => file !== paths.appHtml,
   });
 }
+
+// function copyAssetsFolder() {
+//   fs.copySync(paths.appPublic, paths.appBuild, {
+//     dereference: true,
+//     filter: file => file !== paths.appHtml,
+//   });
+// }

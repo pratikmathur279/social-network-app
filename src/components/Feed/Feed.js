@@ -3,7 +3,8 @@ import React from 'react';
 import classes from './Feed.css'
 
 const Feed = (props) => {
-    const image = require(`../../../build/static/media/${props.item.image}`)
+    const image = require(`../../../public/assets/Images/${props.item.image}`);
+    
     return (
         <div className={classes.Feed}>
             <div className={classes.User}>

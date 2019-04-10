@@ -65,16 +65,13 @@ class ContactPageBuilder extends Component {
                 if(sent){
                     this.actions.sendContact(emailObject, (data)=> {
                         if(data){
-                            // window.open(`mailto:pratikmathur279@gmail.com?subject=${emailObject.subject}&body=${emailObject.message}`);
                             state.formControls = state.initialState;
                             state.emailSent = true;
                             this.setState(state);
                         }
                     });
                 }
-            });
-
-            
+            });   
         }
         else{
             console.log("Error");

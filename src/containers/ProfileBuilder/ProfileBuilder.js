@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import AboutPage from '../../components/AboutPage/AboutPage';
 
 import Auxiliary from '../../hoc/Auxiliary';
 import ProfileContainer from '../../components/Profile/ProfileContainer';
@@ -8,7 +7,6 @@ import Loading from '../../components/UI/Loading/Loading';
 import { Redirect } from 'react-router-dom';
 
 import Modal from '../../components/UI/Modal/Modal';
-import pratik from '../../assets/Images/pratik.jpg';
 import Actions from '../../actions/Actions';
 import UserFeed from '../../components/Profile/UserFeed/UserFeed';
 import EditProfile from '../../components/Profile/EditProfile/EditProfile';
@@ -17,7 +15,6 @@ class ProfileBuilder extends Component {
     constructor(props){
         super(props);
         this.state = {
-            image: pratik,
             loading: true,
             profile: {},
             profiledata: {},
@@ -35,7 +32,6 @@ class ProfileBuilder extends Component {
 
     
     componentWillMount(){
-        console.log("mounted");
         let state = Object.assign({}, this.state);
         const user = localStorage.getItem('currentUser');
        
@@ -67,7 +63,6 @@ class ProfileBuilder extends Component {
     checkAttributes(){
         let state = Object.assign({}, this.state);
 
-        console.log('here');
         if(!state.profiledata.hasOwnProperty('name') || state.profiledata.name.length <1){
             state.profiledata.name = state.profile.name;
         }
@@ -88,7 +83,6 @@ class ProfileBuilder extends Component {
     updateProfile = () => {
  
         if(this.state.files){
-            console.log("files exist");
             this.actions.updateProfileImage(this.state.files, (data) => {
                 let state = Object.assign({}, this.state);
                 state.profiledata.image = data.data;
@@ -96,7 +90,7 @@ class ProfileBuilder extends Component {
                 if(this.checkAttributes()){
                     this.actions.updateProfile(state.profiledata, (data)=> {
                         let temp = {email: state.profiledata.email, image: state.profiledata.image};
-                        this.actions.updateProfileImageFeed(temp, ()=> {
+                        this.actions.updateProfileImageFeed(temp, (data) => {
                             this.forceUpdate();
                         });
                     });
@@ -105,8 +99,6 @@ class ProfileBuilder extends Component {
             });
         }
         else {
-            console.log("no file");
-            
             if(this.checkAttributes()){
                 this.actions.updateProfile(this.state.profiledata, (data)=> {
                     window.location.reload();
@@ -120,7 +112,6 @@ class ProfileBuilder extends Component {
         const value = e.target.value;
         let state = Object.assign({}, this.state);
         if(key === 'profile-image'){
-            console.log(e.target.files[0]);
             state.files = e.target.files[0]; 
         }
         if(key !== 'email'){

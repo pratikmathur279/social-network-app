@@ -5,7 +5,6 @@ import TextInput from '../UI/TextInput/TextInput';
 import TextArea from '../UI/TextArea/TextArea';
 
 const CreateNote = (props) => {
-    console.log(props);
     return(
         <div className={classes.CreateNote}>
             <div className={classes.CreateNoteContainer}>

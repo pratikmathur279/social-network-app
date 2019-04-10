@@ -4,7 +4,6 @@ import Feed from '../../Feed/Feed';
 
 const UserFeed = (props) => {
     const buildItem = (item) => {
-        // item.image = props.image;
         return(
             <Feed key={item.id} item={item}/>
         );

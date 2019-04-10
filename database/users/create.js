@@ -40,24 +40,49 @@ module.exports.create = (event, context, callback) => {
         callback(null, {
           statusCode: error.statusCode || 501,
           headers: { 'Content-Type': 'text/plain' },
-          body: 'Couldn\'t create the user item.',
+          body: 'Couldn\'t create the people item.',
         });
         return;
       }
-  
-      const token = signToken(data.id);
-      console.log(token);
-  
-      // create a response
-      const response = {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
+      
+      const params1 = {
+        TableName: 'social-network-app-people',
+        Item: {
+          id: uuid.v1(),
+          email: data.email,
+          name: data.name,
+          image: data.image,
+          createdAt: timestamp,
+          updatedAt: timestamp,
         },
-        body: JSON.stringify(token),
       };
-      callback(null, response);
+
+      dynamoDb.put(params1, (error)=> {
+        if (error) {
+          console.error(error);
+          callback(null, {
+            statusCode: error.statusCode || 501,
+            headers: { 'Content-Type': 'text/plain' },
+            body: 'Couldn\'t create the people item.',
+          });
+          return;
+        }
+    
+        const token = signToken(data.id);
+        console.log(token);
+    
+        // create a response
+        const response = {
+          statusCode: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+          },
+          body: JSON.stringify(token),
+        };
+        callback(null, response);
+      });
+      
     });
   });
   

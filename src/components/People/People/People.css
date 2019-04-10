@@ -1,0 +1,50 @@
+.People {
+    background-color: rgb(240, 240, 240);
+    margin-top: 10px;
+    padding: 10px 15px;
+}
+
+.User {
+    display: flex;
+    flex-direction: row;
+}
+
+.UserData p {
+    color: grey;
+    font-size: 0.9em;
+}
+
+.Image {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    margin-top: 10px;
+    border-width: 2px;
+}
+
+@media (max-width:500px){
+    .Image {
+        display: block;
+        width: 25%;
+        height: 25%;
+    }
+    .Image img {
+        width: 45vw;
+        height: 25%;
+        justify-content: center;
+    }
+}
+
+
+.UserData {
+    margin-left: 10px;
+    line-height: 1.5em;
+}
+
+.UserData h4{
+    margin-bottom: 0px;
+}
+
+.UserData p {
+    margin: 0px;
+}

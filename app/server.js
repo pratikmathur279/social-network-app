@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
           Files will be saved in the 'uploads' directory. Make
           sure this directory already exists!
         */
-        cb(null, '../build/static/media');
+        cb(null, '../public/assets/Images');
       },
       filename: (req, file, cb) => {
         /*

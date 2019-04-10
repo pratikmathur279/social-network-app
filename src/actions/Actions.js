@@ -2,12 +2,17 @@ import axios from 'axios';
 
 class Actions {
       createUser(user, callback){
-            console.log(user);
             axios.post('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/users', user, { crossDomain: true })
             .then((res)=> {
-                  console.log(res);
                   callback(res);
             });      
+      }
+
+      getAllPeople(callback){
+            axios('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/people', { crossDomain: true })
+            .then((res)=> {
+                  callback(res);   
+            });
       }
 
       updateProfileImage(files, callback){
@@ -16,7 +21,6 @@ class Actions {
         
             axios.post("http://localhost:3001/image-upload",formData)
             .then((res)=> {
-                  console.log(res);
                   callback(res);
             });     
       }
@@ -24,15 +28,13 @@ class Actions {
       updateProfileImageFeed(data, callback){
             axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateImageFeed/${data.email}`, data, { crossDomain: true })
             .then((res)=> {
-                  console.log(res.data);
+                  callback(res);
             });
       }
 
       updateProfile(userData, callback){
-            // console.log(userData.id);
             axios.put(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userProfile/${userData.id}`, userData, { crossDomain: true })
             .then((res)=> {
-                  console.log(res.data);
                   callback(res);
             })      
       }
@@ -40,7 +42,6 @@ class Actions {
       createUserActivity(user, callback){
             axios.post('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userActivity', user, { crossDomain: true })
             .then((res)=> {
-                  console.log(res);
                   callback(res);
             });      
       }
@@ -58,7 +59,6 @@ class Actions {
       createNote(note, callback){
             axios.post('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/feed', note, { crossDomain: true })
             .then((res)=> {
-                  console.log(res.data);
                   callback(res.data);
             });      
       }
@@ -74,10 +74,8 @@ class Actions {
       }
 
       checkIfUserExists(user, callback){
-            console.log(user.email)
             axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/users/${user.email}`, { crossDomain: true })
             .then((res)=> {
-                  console.log(res.data);
                   callback(res.data);
             });
       }
@@ -85,11 +83,9 @@ class Actions {
       loginUser(user, callback){
             axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/login`,user, { crossDomain: true })
             .then(res => {
-                  console.log(res.data);
                   callback(res.data, null);
                   
             }, (err)=>{
-                  console.log(err);
                   callback(null, err);
             });
       }
@@ -97,9 +93,6 @@ class Actions {
       getUser(user, callback){
         axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/user/${user}`,{ crossDomain: true })
           .then((res)=>{
-                console.log(res.data);
-            //     var data = JSON.parse(res.data);
-                // alert(data);
                 callback(res.data);
           });
     }

@@ -23,6 +23,7 @@ provider:
     USERS_TABLE: { "Ref": "UsersDynamoTable" } 
     USERS_ACTIVITY_TABLE: { "Ref": "UserActivityDynamoTable"}
     FEED_TABLE: { "Ref": "FeedDynamoTable" }
+    PEOPLE_TABLE: { "Ref": "PeopleDynamoTable"}
     EMAIL: "pratikmathur279@gmail.com"
 
   iamRoleStatements:
@@ -38,6 +39,7 @@ provider:
         - { "Fn::GetAtt": ["UsersDynamoTable", "Arn"] }
         - { "Fn::GetAtt": ["UserActivityDynamoTable", "Arn"] }
         - { "Fn::GetAtt": ["FeedDynamoTable", "Arn"] }
+        - { "Fn::GetAtt": ["PeopleDynamoTable", "Arn"] }
 
     - Effect: "Allow"
       Action:
@@ -97,6 +99,15 @@ functions:
     events:
       - http:
           path: feed
+          method: get
+          cors: true
+
+#list people
+  listPeople:
+    handler: people/list.list
+    events:
+      - http:
+          path: people
           method: get
           cors: true
 
@@ -215,3 +226,21 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:service}-feed
+
+    PeopleDynamoTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:service}-people
+    

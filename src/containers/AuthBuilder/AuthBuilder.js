@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Auxiliary from '../../hoc/Auxiliary';
 import Layout from '../../hoc/Layout/Layout';
-import pratik from '../../assets/Images/pratik.jpg';
+// import pratik from '../../assets/Images/pratik.jpg';
 import LoginFormContainer from '../../components/Auth/Login/LoginFormContainer';
 import { Redirect } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ class AuthBuilder extends Component {
         super(props);
         this.state = {
             isFlipped: false,
-            image: pratik,
+            // image: pratik,
             name: 'Pratik Mathur',
             redirect: false,
             loginFormControls: {
@@ -39,12 +39,10 @@ class AuthBuilder extends Component {
       componentWillMount(){
         console.log(sessionStorage);
         console.log(localStorage);
-        console.log(process);
       }
 
       onClick(e) {
         if(this.valid()){
-            console.log(this.state.loginFormControls);
             let state = Object.assign({}, this.state);
            
             let user = this.state.loginFormControls;
@@ -55,7 +53,6 @@ class AuthBuilder extends Component {
                     sessionStorage.setItem('currentUser', user.email);
                     
                     const user1 = sessionStorage.getItem('currentUser');
-                    console.log(user1);
                     this.setRedirect(state);
                 }
                 else {
@@ -103,7 +100,6 @@ class AuthBuilder extends Component {
 
     renderRedirect = () => {
       if (this.state.redirect) {
-        console.log("redirect");
         return <Redirect to='/home' />
       }
     }

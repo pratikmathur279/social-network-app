@@ -1,21 +1,23 @@
 import React from 'react';
 import classes from './EditProfileForm.css';
 
-import pratik from '../../../../assets/Images/pratik.jpg';
+// import pratik from '../../../../assets/Images/pratik.jpg';
 import TextInput from '../../../UI/TextInput/TextInput';
 import TextArea from '../../../UI/TextArea/TextArea';
 import Image from '../../../Images/Image';
 
 const EditProfileForm = (props) => {
-    console.log(props);
-    const profile_image = require(`../../../../../build/static/media/${props.image}`);
-
+    
+    const url = `/public/assets/Images/${props.image}`;
+    console.log(url);
+    const profile_image = require(`../../../../../public/assets/Images/${props.image}`);
+    console.log(profile_image);
     return(
             <div className={classes.EditProfileForm}>
                 
                 <div className={classes.Form}>
                     <form>
-                        <Image className={classes.Image} src={pratik} alt="My Image" onChange={props.onChange} name="profile-image" src={profile_image}/>
+                        <Image className={classes.Image} alt="My Image" onChange={props.onChange} name="profile-image" src={profile_image}/>
                         <input className={classes.File} type="file" onChange={props.onChange} name="profile-image"></input>
                         {/* <button type="button" value={props.profiledata.image} onClick={props.uploadImage}>Upload new image</button> */}
                         {/* {props.profileUpdated ? <p className={classes.profileUpdated}>Profile Updated!</p>: ""} */}

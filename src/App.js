@@ -8,6 +8,7 @@ import AuthBuilder from './containers/AuthBuilder/AuthBuilder';
 import SocialNetworkBuilder from './containers/SocialNetworkBuilder/SocialNetworkBuilder';
 import RegisterBuilder from './containers/RegisterBuilder/RegisterBuilder';
 import ProfileBuilder from './containers/ProfileBuilder/ProfileBuilder';
+import PeopleBuilder from './containers/PeopleBuilder/PeopleBuilder';
 import NotFoundComponent from './containers/NotFoundComponent/NotFoundComponent';
 import Logout from './components/Auth/Logout/Logout';
 import Footer from '../src/components/UI/Footer/Footer';
@@ -41,6 +42,7 @@ class App extends Component {
   }
 
   getSession(){
+    console.log(process);
     let state = Object.assign({}, this.state);
     const user = sessionStorage.getItem('currentUser');
     if(user){
@@ -98,6 +100,7 @@ class App extends Component {
 
   render () {
     {this.state.redirect ? <Redirect to='/' /> : ""}
+    console.log(process.env);
     return (
 
       <BrowserRouter>
@@ -109,6 +112,7 @@ class App extends Component {
               <Route path="/register" component={RegisterBuilder} />
               <Route path="/home" component={SocialNetworkBuilder}/>
               <Route path="/profile" component={ProfileBuilder} />
+              {/* <Route path="/people" component={PeopleBuilder} /> */}
               <Route path="/logout" component={Logout} />
               <Route path="*" component={NotFoundComponent} />
               </Switch>
