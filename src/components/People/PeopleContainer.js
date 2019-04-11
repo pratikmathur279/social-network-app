@@ -7,7 +7,7 @@ const PeopleContainer = (props) => {
     const buildItem = (item) => {
         
         return(
-            <People />
+            <People key={item.id} item={item}/>
         )
 
     }

@@ -25,6 +25,13 @@ class Actions {
             });     
       }
     
+      updateUserImage(userData, callback){
+            axios.put(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateUserImage`, userData, { crossDomain: true })
+            .then((res)=> {
+                  callback(res);
+            })      
+      }
+
       updateProfileImageFeed(data, callback){
             axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateImageFeed/${data.email}`, data, { crossDomain: true })
             .then((res)=> {

@@ -1,7 +1,7 @@
 'use strict';
 
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
-
+const request = require('request');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.update = (event, context, callback) => {
@@ -32,6 +32,7 @@ module.exports.update = (event, context, callback) => {
     ReturnValues: 'ALL_NEW',
   };
 
+  
   // update the todo in the database
   dynamoDb.update(params, (error, result) => {
     // handle potential errors
@@ -45,15 +46,18 @@ module.exports.update = (event, context, callback) => {
       return;
     }
     console.log(result);
-    // create a response
-    const response = {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify(result.Attributes),
-    };
-    callback(null, response);
+
+      // create a response
+      const response = {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
+        body: JSON.stringify(result.Attributes),
+      };
+
+      callback(null, response);
+
   });
 };

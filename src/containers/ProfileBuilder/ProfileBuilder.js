@@ -89,10 +89,13 @@ class ProfileBuilder extends Component {
                 
                 if(this.checkAttributes()){
                     this.actions.updateProfile(state.profiledata, (data)=> {
-                        let temp = {email: state.profiledata.email, image: state.profiledata.image};
-                        this.actions.updateProfileImageFeed(temp, (data) => {
-                            this.forceUpdate();
+                        this.actions.updateUserImage(data, (newData)=> {
+                            let temp = {email: state.profiledata.email, image: state.profiledata.image};
+                            this.actions.updateProfileImageFeed(temp, (data) => {
+                                this.forceUpdate();
+                            });
                         });
+                        
                     });
     
                 }

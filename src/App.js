@@ -100,7 +100,6 @@ class App extends Component {
 
   render () {
     {this.state.redirect ? <Redirect to='/' /> : ""}
-    console.log(process.env);
     return (
 
       <BrowserRouter>
@@ -112,7 +111,7 @@ class App extends Component {
               <Route path="/register" component={RegisterBuilder} />
               <Route path="/home" component={SocialNetworkBuilder}/>
               <Route path="/profile" component={ProfileBuilder} />
-              {/* <Route path="/people" component={PeopleBuilder} /> */}
+              <Route path="/people" component={PeopleBuilder} />
               <Route path="/logout" component={Logout} />
               <Route path="*" component={NotFoundComponent} />
               </Switch>

@@ -29,6 +29,12 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - lambda:InvokeFunction
+        - lambda:InvokeAsync
+      Resource: "*"
+
+    - Effect: Allow
+      Action:
         - dynamodb:Query
         - dynamodb:Scan
         - dynamodb:GetItem
@@ -164,6 +170,15 @@ functions:
           path: userProfile/{id}
           method: put
           cors: true
+
+#update user profile image
+  updateUserImage:
+    handler: people/updateUserImage.update
+    events:
+      - http: 
+          path: updateUserImage
+          method: put
+          cors: true          
                   
 #get user activity
   getUserActivity:

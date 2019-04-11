@@ -51,7 +51,7 @@ module.exports.create = (event, context, callback) => {
           id: uuid.v1(),
           email: data.email,
           name: data.name,
-          image: data.image,
+          image: params.Item.image,
           createdAt: timestamp,
           updatedAt: timestamp,
         },
