@@ -1,9 +1,23 @@
 .UserFeed {
     width: 60vw;
+    min-height: fit-content;
     display: block;
     margin: 0 auto;
     padding: 30px;
     /* margin: 0 10px; */
     margin-bottom: 20px;
     background: rgb(236, 236, 236);
+}
+
+@media screen and (max-width: 500px){
+    .UserFeed{
+        padding: 0;
+        margin: 0 10px;
+        width: fit-content;
+    }
+
+    .FeedContainer {
+        padding: 20px 10px;
+        margin-bottom: 20px;
+    }
 }

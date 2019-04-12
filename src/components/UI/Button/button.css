@@ -5,10 +5,11 @@
     color: white;
     font-size: 16px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .Success {
-    color: #5C9210;
+    background: #5C9210;
 }
 
 .Danger {

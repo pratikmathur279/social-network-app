@@ -34,15 +34,15 @@ class ProfileBuilder extends Component {
     componentWillMount(){
         let state = Object.assign({}, this.state);
         const user = localStorage.getItem('currentUser');
-       
+        state.currentUser = user;
          this.actions.getUser(user, (data)=> {
             state.profile = data ;
             state.profiledata.email = data.email;
             state.id = data.id;
             state.profiledata.id = data.id;
             this.actions.getUserFeed(state.profiledata.email, (res) => {
-                state.profile.feed = res.data;
-                state.profile.feedCount = res.data.length;
+                state.profile.feed = res;
+                state.profile.feedCount = res.length;
                 state.loading = false;
                 this.setState(state);
             });
@@ -89,12 +89,14 @@ class ProfileBuilder extends Component {
                 
                 if(this.checkAttributes()){
                     this.actions.updateProfile(state.profiledata, (data)=> {
-                        this.actions.updateUserImage(data, (newData)=> {
+                        // this.actions.updateUserImage(data, (newData)=> {
                             let temp = {email: state.profiledata.email, image: state.profiledata.image};
+                            console.log(temp);
                             this.actions.updateProfileImageFeed(temp, (data) => {
+                                console.log("here");
                                 this.forceUpdate();
                             });
-                        });
+                        // });
                         
                     });
     

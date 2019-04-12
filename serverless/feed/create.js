@@ -10,7 +10,7 @@ module.exports.create = (event, context, callback) => {
   var localTime = new Date(); //get your local time
   var utcTime = localTime.getUTCHours(); // find UTC hours
   var estTime = new Date(); // create a new date object for the EST time
-  estTime.setHours(utcTime-5); // adjust it for EST hours.
+  estTime.setHours(utcTime-4); // adjust it for EST hours.
   const date = estTime.toISOString().replace(/T/, ' ').replace(/\..+/, '');
   const data = JSON.parse(event.body);
   

@@ -2,6 +2,7 @@
     background-color: rgb(240, 240, 240);
     margin-top: 10px;
     padding: 10px 15px;
+    position: relative;
 }
 
 .User {
@@ -23,10 +24,13 @@
 }
 
 @media (max-width:500px){
+    .Feed {
+        padding: 10px 10px;
+    }
     .Image {
         display: block;
-        width: 25%;
-        height: 25%;
+        width: 20%;
+        height: 20%;
     }
     .Image img {
         width: 45vw;
@@ -43,8 +47,22 @@
 
 .UserData h4{
     margin-bottom: 0px;
+    margin-top: 18px;
 }
 
 .UserData p {
     margin: 0px;
+}
+
+.CloseButton {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+}
+
+@media screen and (max-width: 500px){
+    .CloseButton {
+        right: 15px;
+        top: 43%;
+    }
 }

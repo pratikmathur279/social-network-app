@@ -17,7 +17,7 @@ const navigationItems = (props) => {
                     <NavigationItem to="/home">Home</NavigationItem>
                     <NavigationItem to="/profile">Profile</NavigationItem>
                     <NavigationItem to="/people">People</NavigationItem>
-                    <NavigationItem to="/logout">Logout</NavigationItem>
+                    <NavigationItem to="/logout" className={classes.Logout}>Logout</NavigationItem>
                 </ul>
                 }
         </div>

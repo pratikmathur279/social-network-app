@@ -2,12 +2,13 @@
     position: fixed;
     z-index: 500;
     background-color: white;
-    width: 90%;
+    width: 92%;
+    padding-top: 20px;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
-    left: 5%;
-    height: fit-content;
-    top: 10%;
+    left: 4%;
+    height: 83%;
+    top: 11%;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
 }
@@ -20,9 +21,9 @@
 
 @media (min-width: 600px) {
     .Modal {
-        width: 65%;
+        width: 70%;
         left: calc(35% - 250px);
-        height: fit-content;
+        height: 90%;
         top: 0%;
     }
 }

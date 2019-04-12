@@ -1,17 +1,29 @@
 .People {
     background-color: rgb(240, 240, 240);
     margin-top: 10px;
-    padding: 10px 15px;
+    padding: 10px 5px;
+}
+
+.UserContainer{
+    display: flex;
+    flex-direction: row;
 }
 
 .User {
     display: flex;
     flex-direction: row;
+    width: 85%;
 }
 
 .UserData p {
     color: grey;
     font-size: 0.9em;
+}
+
+.FollowButton {
+    display: block;
+    margin: auto;
+    right: 10px;
 }
 
 .Image {
@@ -25,8 +37,8 @@
 @media (max-width:500px){
     .Image {
         display: block;
-        width: 25%;
-        height: 25%;
+        width: 20%;
+        height: 90%;
     }
     .Image img {
         width: 45vw;

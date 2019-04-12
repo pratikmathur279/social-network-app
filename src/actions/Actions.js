@@ -25,12 +25,12 @@ class Actions {
             });     
       }
     
-      updateUserImage(userData, callback){
-            axios.put(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateUserImage`, userData, { crossDomain: true })
-            .then((res)=> {
-                  callback(res);
-            })      
-      }
+      // updateUserImage(userData, callback){
+      //       axios.put(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateUserImage`, userData, { crossDomain: true })
+      //       .then((res)=> {
+      //             callback(res);
+      //       })      
+      // }
 
       updateProfileImageFeed(data, callback){
             axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateImageFeed/${data.email}`, data, { crossDomain: true })
@@ -52,14 +52,13 @@ class Actions {
                   callback(res);
             });      
       }
-      setLoggedIn(user, callback){
-
-      }
 
       getUserFeed(email, callback){
             axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/feed/${email}`, { crossDomain: true})
             .then((res)=> {
-                  callback(res);
+                  var data = res.data;
+                  data.sort((a, b) => (a.date < b.date) ? 1 : -1);
+                  callback(data);
             });
       }
 
@@ -97,6 +96,13 @@ class Actions {
             });
       }
 
+      getUserById(id, callback){
+            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/getuser/${id}`,{ crossDomain: true })
+            .then((res)=>{
+                  callback(res.data);
+            });
+      }
+      
       getUser(user, callback){
         axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/user/${user}`,{ crossDomain: true })
           .then((res)=>{

@@ -14,7 +14,7 @@
 }
 
 .Toolbar nav {
-    height: 100%;
+    height: fit-content;
 }
 
 .Logo {

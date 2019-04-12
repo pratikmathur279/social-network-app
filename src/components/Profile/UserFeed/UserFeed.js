@@ -12,7 +12,11 @@ const UserFeed = (props) => {
     return(
         <div className={classes.UserFeed}>
             <div className={classes.FeedContainer}>
-                {props.profile.feed.map(buildItem)}
+            { props.profile.feedCount > 0 ? 
+            props.profile.feed.map(buildItem)    
+                : <h3>No feed items!</h3>
+        } 
+                
             </div>
         </div>
     );

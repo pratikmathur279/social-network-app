@@ -135,12 +135,21 @@ functions:
           method: get
           cors: true
 
-#get user
+#get user by email
   getUser:
     handler: users/get.get  
     events:
       - http:
           path: user/{email}
+          method: get
+          cors: true          
+
+#get user by id
+  getUserById:
+    handler: users/getUserById.get  
+    events:
+      - http:
+          path: getuser/{id}
           method: get
           cors: true          
 

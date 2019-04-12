@@ -9,10 +9,7 @@
     height: 100%;
 }
 
-.logout {
-    border: 1px solid #0154A3;
-    border-radius: 1px;
-}
+
 
 @media (min-width: 500px) {
     .NavigationItems {
