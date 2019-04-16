@@ -36,16 +36,26 @@ class ProfileBuilder extends Component {
         const user = localStorage.getItem('currentUser');
         state.currentUser = user;
          this.actions.getUser(user, (data)=> {
+            console.log(data);
             state.profile = data ;
             state.profiledata.email = data.email;
             state.id = data.id;
             state.profiledata.id = data.id;
-            this.actions.getUserFeed(state.profiledata.email, (res) => {
-                state.profile.feed = res;
-                state.profile.feedCount = res.length;
-                state.loading = false;
-                this.setState(state);
+            
+            this.actions.userFollowingList(state.profile.email, (res)=> {
+                state.profile.followingLength = res.data.length;
+                this.actions.userFollowedList(state.profile.email, (res1)=>{
+                    state.profile.followedLength = res1.data.length;
+                    this.actions.getUserFeed(state.profiledata.email, (res) => {
+                        state.profile.feed = res;
+                        state.profile.feedCount = res.length;
+                        
+                        state.loading = false;
+                        this.setState(state);
+                    });
+                });   
             });
+
         });
     }
 

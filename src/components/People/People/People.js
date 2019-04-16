@@ -16,10 +16,10 @@ const People = (props) => {
                     </div>
                 </div>
                 <div className={classes.FollowButton}>
-                    {!props.item.followingUser ? 
-                        <Button followingUser={props.item.followingUser} clicked={props.FollowUserToggle} id={props.item.id}>Follow</Button>
-                    :
+                    {props.item.followingUser ? 
                         <Button followingUser={props.item.followingUser} clicked={props.FollowUserToggle} id={props.item.id}>Following</Button>
+                    :
+                        <Button followingUser={props.item.followingUser} clicked={props.FollowUserToggle} id={props.item.id}>Follow</Button>
                      }
                     
                 </div>

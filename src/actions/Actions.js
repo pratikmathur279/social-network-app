@@ -8,8 +8,11 @@ class Actions {
             });      
       }
 
-      getAllPeople(callback){
-            axios('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/people', { crossDomain: true })
+      getAllPeople(user, callback){
+            let data = {
+                  'email': user
+            }
+            axios.post('https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/people', data, { crossDomain: true })
             .then((res)=> {
                   callback(res);   
             });
@@ -24,13 +27,42 @@ class Actions {
                   callback(res);
             });     
       }
+
+      userFollowingList(user, callback){
+            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userfollowlist/${user}`)
+            .then((res)=> {
+                  callback(res);
+            });
+      }
+
+      userFollowedList(user, callback){
+            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userfollowedlist/${user}`)
+            .then((res)=> {
+                  callback(res);
+            });
+      }
+
+      followUser(fromId, toId, callback){
+           let data = {
+                 'fromId': fromId,
+                 'toId': toId
+            }
+           axios.post("https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/followUser", data)
+            .then((res)=> {
+                  callback(res);
+            });     
+      }
     
-      // updateUserImage(userData, callback){
-      //       axios.put(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateUserImage`, userData, { crossDomain: true })
-      //       .then((res)=> {
-      //             callback(res);
-      //       })      
-      // }
+      unfollowUser(fromId, toId, callback){
+            let data = {
+                 'fromId': fromId,
+                 'toId': toId
+            }
+           axios.post("https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/unfollowUser", data)
+            .then((res)=> {
+                  callback(res);
+            });  
+      }
 
       updateProfileImageFeed(data, callback){
             axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/updateImageFeed/${data.email}`, data, { crossDomain: true })

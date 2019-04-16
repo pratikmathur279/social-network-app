@@ -40,9 +40,26 @@ class PeopleBuilder extends Component {
           state.loggedIn = false;
         }
 
-        this.actions.getAllPeople((res)=>{
+        this.actions.getAllPeople(user, (res)=>{
             state.peopleList = res.data;
-            this.setState(state);
+            console.log(state.peopleList);
+            console.log(user);
+            this.actions.userFollowingList(user, (res)=>{
+                state.followList = res.data;
+                console.log(state.followList);
+
+                // let temp = state.peopleList;
+                for(let x in state.peopleList){
+                    for(let y in state.followList){
+                        if(state.peopleList[x].id == state.followList[y].toId){
+                            state.peopleList[x].followingUser = true;
+                        }
+                    }
+                }
+
+                this.setState(state);
+            });
+            
         });
     }
 
@@ -56,16 +73,23 @@ class PeopleBuilder extends Component {
     FollowUserToggle(e){
         console.log(e.target.id);
         let state = Object.assign({}, this.state);
-        // if(state.followingUser == false){
-        //     state.followingUser = true;
-        // }
-        // else{
-        //     state.followingUser = false;
-        // }
+        
         for(let user in state.peopleList){
             if(state.peopleList[user].id == e.target.id){
                 state.peopleList[user].followingUser = !(state.peopleList[user].followingUser);
-                this.setState(state);
+                console.log(state.followList);
+                let currentUserId = state.followList[0].fromId;
+                if(state.peopleList[user].followingUser == true){
+                    this.actions.followUser(currentUserId, state.peopleList[user].id, (data)=> {
+                        this.setState(state);
+                    });
+                }
+                else if(state.peopleList[user].followingUser == false){
+                    this.actions.unfollowUser(currentUserId, state.peopleList[user].id, (data)=> {
+                        this.setState(state);
+                    });
+                }
+                
             }
         }
         

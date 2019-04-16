@@ -24,6 +24,7 @@ provider:
     USERS_ACTIVITY_TABLE: { "Ref": "UserActivityDynamoTable"}
     FEED_TABLE: { "Ref": "FeedDynamoTable" }
     PEOPLE_TABLE: { "Ref": "PeopleDynamoTable"}
+    FOLLOW_TABLE: { "Ref": "FollowDynamoTable"}
     EMAIL: "pratikmathur279@gmail.com"
 
   iamRoleStatements:
@@ -46,6 +47,7 @@ provider:
         - { "Fn::GetAtt": ["UserActivityDynamoTable", "Arn"] }
         - { "Fn::GetAtt": ["FeedDynamoTable", "Arn"] }
         - { "Fn::GetAtt": ["PeopleDynamoTable", "Arn"] }
+        - { "Fn::GetAtt": ["FollowDynamoTable", "Arn"] }
 
     - Effect: "Allow"
       Action:
@@ -90,6 +92,42 @@ functions:
           method: post
           cors: true          
 
+#follow user
+  followUser:
+    handler: follow/followUser.create
+    events:
+      - http:
+          path: followUser
+          method: post
+          cors: true          
+
+#unfollow user
+  unfollowUser:
+    handler: follow/unfollowUser.delete
+    events:
+      - http:
+          path: unfollowUser
+          method: post
+          cors: true 
+
+#userFollowing list
+  userFollowingList:
+    handler: follow/userFollowingList.get
+    events:
+      - http:
+          path: userfollowlist/{email}
+          method: get
+          cors: true
+          
+#userFollowed list
+  userFollowedList:
+    handler: follow/userFollowedList.get
+    events:
+      - http:
+          path: userfollowedlist/{email}
+          method: get
+          cors: true
+
 #create feed item
   createNote:
     handler: feed/create.create
@@ -114,7 +152,7 @@ functions:
     events:
       - http:
           path: people
-          method: get
+          method: post
           cors: true
 
 #update feed image for profiles
@@ -267,4 +305,21 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:service}-people
+    
+    FollowDynamoTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:service}-follow
     

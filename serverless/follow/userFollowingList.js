@@ -6,7 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.get = (event, context, callback) => {
   const params = {
-    TableName: process.env.USERS_TABLE,
+    TableName: 'social-network-app-users',
   };
 
 console.log(event.pathParameters.email);
@@ -30,18 +30,34 @@ console.log(event.pathParameters.email);
         if(element.email == event.pathParameters.email){
             user = element;
             console.log(user);
+
+            const params1 = {
+                TableName: 'social-network-app-follow',
+            }
+
+            dynamoDb.scan(params1, (error, result) => {
+                const list = result.Items;
+                let finalList = [];
+                list.forEach((item)=> {
+                    if(item.fromId == user.id){
+                        finalList.push(item);
+                    }
+                });
+
+                const response = {
+                    statusCode: 200,
+                    headers: {
+                      'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true,
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(finalList),
+                  };
+                  callback(null, response);
+            });
         }
     })
     // create a response
-    const response = {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true,
-      'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user),
-    };
-    callback(null, response);
+    
   });
 };
