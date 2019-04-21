@@ -132,7 +132,7 @@
   "bugs": {
     "url": "https://github.com/pratikmathur279/my-website/issues"
   },
-  "homepage": "http://social.pratikmathur.com.s3-website-us-east-1.amazonaws.com/",
+  "homepage": "http://ec2-54-219-137-192.us-west-1.compute.amazonaws.com",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "devDependencies": {}
 }
