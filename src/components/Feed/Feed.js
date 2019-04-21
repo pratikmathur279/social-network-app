@@ -8,7 +8,7 @@ const Feed = (props) => {
             <div className={classes.Feed}>
                 {window.location.pathname == '/profile' ? 
 
-                <img src="https://img.icons8.com/metro/26/000000/multiply.png" className={classes.CloseButton} ></img> : ''} <div className={classes.User}>
+                <img src="https://img.icons8.com/metro/26/000000/multiply.png" id={props.item.id} onClick={props.deleteFeedHandler} className={classes.CloseButton} ></img> : ''} <div className={classes.User}>
                     <img className={classes.Image} src={image} />
                     <div className={classes.UserData}>
                         <h4>{props.item.name}</h4>

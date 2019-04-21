@@ -7,7 +7,6 @@ import ProfileData from '../../components/Profile/ProfileData/ProfileData';
 import UserFeed from '../Profile/UserFeed/UserFeed';
 
 const UserProfileContainer = (props) => {
-    console.log(props);
     if(props.state.profile){
     return(
         <div className={classes.UserProfileContainer}>

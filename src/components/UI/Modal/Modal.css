@@ -3,7 +3,7 @@
     z-index: 500;
     background-color: white;
     width: 92%;
-    padding-top: 20px;
+    padding-top: 0px;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     left: 4%;
@@ -23,7 +23,7 @@
     .Modal {
         width: 70%;
         left: calc(35% - 250px);
-        height: 90%;
+        height: 80%;
         top: 0%;
     }
 }

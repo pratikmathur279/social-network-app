@@ -97,17 +97,26 @@ class AuthBuilder extends Component {
           state.errors.email = "Please enter an email.";
           state.errors.length += 1;
       }
+      else if(!(state.registerFormControls.email.includes('@gmail' || '@yahoo'))){
+          state.errors.email = "Incorrect Email format.";
+          state.errors.length += 1;
+      }
 
       if(state.registerFormControls.mobile === ''){
           state.errors.mobile = "Please enter a mobile number.";
           state.errors.length += 1;
       }
 
+      if(state.registerFormControls.password.length <4){
+        state.errors.password = 'Please enter atleast 4 characters';
+        state.errors.length +=1;
+      }
+
       if(state.registerFormControls.password === ''){
           state.errors.password = "Please enter a password.";
           state.errors.length += 1;
       }
-
+      
       this.setState(state);
       return state.errors.length === 0;
   }

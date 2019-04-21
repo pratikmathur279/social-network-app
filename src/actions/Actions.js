@@ -29,14 +29,14 @@ class Actions {
       }
 
       userFollowingList(user, callback){
-            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userfollowlist/${user}`)
+            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userfollowlist/${user}`, { crossDomain: true })
             .then((res)=> {
                   callback(res);
             });
       }
 
       userFollowedList(user, callback){
-            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userfollowedlist/${user}`)
+            axios(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/userfollowedlist/${user}`, { crossDomain: true })
             .then((res)=> {
                   callback(res);
             });
@@ -47,18 +47,25 @@ class Actions {
                  'fromId': fromId,
                  'toId': toId
             }
-           axios.post("https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/followUser", data)
+           axios.post("https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/followUser", data, { crossDomain: true })
             .then((res)=> {
                   callback(res);
             });     
       }
     
+      deleteFeedItem(id, callback){
+            axios.post(`https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/deleteFeed/${id}`, { crossDomain: true })
+            .then((res)=> {
+                  callback(res);
+            });
+      }
+
       unfollowUser(fromId, toId, callback){
             let data = {
                  'fromId': fromId,
                  'toId': toId
             }
-           axios.post("https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/unfollowUser", data)
+           axios.post("https://sl3cev5vli.execute-api.us-east-1.amazonaws.com/dev/unfollowUser", data, { crossDomain: true })
             .then((res)=> {
                   callback(res);
             });  

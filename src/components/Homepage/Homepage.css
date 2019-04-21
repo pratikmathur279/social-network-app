@@ -1,6 +1,7 @@
 .Homepage {
     display: block;
     margin: 20px auto;
+    height: fit-content;
     width: 60%;
     /* background-color: rgb(240, 240, 240); */
     padding: 15px;

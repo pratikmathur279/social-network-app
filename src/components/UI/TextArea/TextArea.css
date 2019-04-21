@@ -50,4 +50,7 @@ textarea{
     .Input textarea {
         width: 70vw;
     }
+    textarea {
+        height: 10vh;
+    }
 }

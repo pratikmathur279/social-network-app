@@ -4,12 +4,23 @@
 
 .CreateNoteContainer {
     display: block;
-    width: 95%;
+    width: 42vw;
     margin: 0 auto;
+    text-align: center;
 }
 
 .CreateNoteContainer button{
     margin-top: 15px;
+}
+
+.CreateNoteContainer input,
+.CreateNoteContainer textarea
+{
+    width:  35vw;
+}
+
+.CreateNoteContainer .Input {
+    margin-top: 5px;
 }
 
 @media screen and (max-width: 500px){

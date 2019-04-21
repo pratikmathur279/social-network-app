@@ -85,6 +85,8 @@ class SocialNetworkBuilder extends Component {
                     state.feed = data1;
                     state.showModal = false;
                     this.setState(state);
+                    // this.render();
+                    window.location.reload();
                 });
             });
         }

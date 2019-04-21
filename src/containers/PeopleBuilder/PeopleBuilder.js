@@ -42,13 +42,9 @@ class PeopleBuilder extends Component {
 
         this.actions.getAllPeople(user, (res)=>{
             state.peopleList = res.data;
-            console.log(state.peopleList);
-            console.log(user);
             this.actions.userFollowingList(user, (res)=>{
                 state.followList = res.data;
-                console.log(state.followList);
 
-                // let temp = state.peopleList;
                 for(let x in state.peopleList){
                     for(let y in state.followList){
                         if(state.peopleList[x].id == state.followList[y].toId){
@@ -77,7 +73,6 @@ class PeopleBuilder extends Component {
         for(let user in state.peopleList){
             if(state.peopleList[user].id == e.target.id){
                 state.peopleList[user].followingUser = !(state.peopleList[user].followingUser);
-                console.log(state.followList);
                 let currentUserId = state.followList[0].fromId;
                 if(state.peopleList[user].followingUser == true){
                     this.actions.followUser(currentUserId, state.peopleList[user].id, (data)=> {
@@ -108,17 +103,25 @@ class PeopleBuilder extends Component {
         let state = Object.assign({}, this.state);
         this.actions.getUserById(id, (res)=> {
             state.profile = res;
-            this.actions.getUserFeed(res.email, (data)=> {
-                state.profile.feed = data;
-                if(data.length == 0){
-                    state.profile.feedCount = 0;
-                }
-                else {
-                    state.profile.feedCount = data.length;
-                }
-                this.setState(state);
-                this.openModalHandler();    
-            })
+            this.actions.userFollowingList(state.profile.email, (res)=> {
+                state.profile.followingLength = res.data.length;
+                this.actions.userFollowedList(state.profile.email, (res1)=>{
+                    state.profile.followedLength = res1.data.length;
+                    console.log(state.profile.email);
+                    this.actions.getUserFeed(state.profile.email, (data)=> {
+                        state.profile.feed = data;
+                        if(data.length == 0){
+                            state.profile.feedCount = 0;
+                        }
+                        else {
+                            state.profile.feedCount = data.length;
+                        }
+                        this.setState(state);
+                        this.openModalHandler();    
+                    })
+                });
+            });
+            
         });
     }
 

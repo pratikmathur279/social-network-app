@@ -23,6 +23,9 @@
     margin: auto;
 }
 
+.NavLinkActive {
+    color: red;
+}
 .selected {
     border: 1px #0054a4 solid;
 }

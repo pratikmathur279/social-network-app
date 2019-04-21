@@ -28,6 +28,7 @@ class ProfileBuilder extends Component {
         this.closeModalHandler = this.closeModalHandler.bind(this);
         this.updateProfile = this.updateProfile.bind(this);
         this.checkAttributes = this.checkAttributes.bind(this);
+        this.deleteFeedHandler = this.deleteFeedHandler.bind(this);
     }
 
     
@@ -36,7 +37,6 @@ class ProfileBuilder extends Component {
         const user = localStorage.getItem('currentUser');
         state.currentUser = user;
          this.actions.getUser(user, (data)=> {
-            console.log(data);
             state.profile = data ;
             state.profiledata.email = data.email;
             state.id = data.id;
@@ -101,15 +101,10 @@ class ProfileBuilder extends Component {
                     this.actions.updateProfile(state.profiledata, (data)=> {
                         // this.actions.updateUserImage(data, (newData)=> {
                             let temp = {email: state.profiledata.email, image: state.profiledata.image};
-                            console.log(temp);
                             this.actions.updateProfileImageFeed(temp, (data) => {
-                                console.log("here");
                                 this.forceUpdate();
                             });
-                        // });
-                        
                     });
-    
                 }
             });
         }
@@ -120,6 +115,12 @@ class ProfileBuilder extends Component {
                 });    
             }
         }
+    }
+
+    deleteFeedHandler(e){
+        this.actions.deleteFeedItem(e.target.id, (res) => {
+            window.location.reload();
+        });
     }
 
     handleChange(e){
@@ -169,6 +170,7 @@ class ProfileBuilder extends Component {
                             <ProfileContainer loading={this.state.loading} onClick={this.onClick} state={this.state} />
                             <UserFeed 
                                 {...this.state}
+                                deleteFeedHandler={this.deleteFeedHandler}
                             />
                         </Auxiliary>
                     }  

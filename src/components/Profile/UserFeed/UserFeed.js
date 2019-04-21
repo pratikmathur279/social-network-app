@@ -5,7 +5,7 @@ import Feed from '../../Feed/Feed';
 const UserFeed = (props) => {
     const buildItem = (item) => {
         return(
-            <Feed key={item.id} item={item}/>
+            <Feed key={item.id} item={item} deleteFeedHandler={props.deleteFeedHandler} />
         );
     }
 

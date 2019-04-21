@@ -39,6 +39,8 @@ class AuthBuilder extends Component {
       componentWillMount(){
         console.log(sessionStorage);
         console.log(localStorage);
+        sessionStorage.clear();
+        localStorage.clear();
       }
 
       onClick(e) {

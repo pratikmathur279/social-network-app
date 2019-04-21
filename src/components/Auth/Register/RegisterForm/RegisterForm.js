@@ -17,6 +17,7 @@ const RegisterForm = (props) => {
                     <TextInput errors={props.errors} onChange={props.onChange} id="mobile" name="mobile" value={props.registerFormControls.mobile} />
                     <TextInput errors={props.errors} onChange={props.onChange} id="email" name="email" value={props.registerFormControls.email} />
                     <TextInput type="password" errors={props.errors} onChange={props.onChange} id="password" name="password" value={props.registerFormControls.password} />
+                    {/* <TextInput type="password" errors={props.errors} onChange={props.onChange} id="password2" name="confirm_password" value={props.registerFormControls.password2} /> */}
                     <button type="button" onClick={props.onClick}>Register</button>
                     
                     <div className={classes.RegisterLink}>

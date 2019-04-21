@@ -108,6 +108,15 @@ functions:
       - http:
           path: unfollowUser
           method: post
+          cors: true
+
+#delete feed item
+  deleteFeed:
+    handler: feed/delete.delete
+    events:
+      - http:
+          path: deleteFeed/{id}
+          method: post
           cors: true 
 
 #userFollowing list
