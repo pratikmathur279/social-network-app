@@ -1,0 +1,17 @@
+.tablist {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+}
+
+.tablistitem {
+  width: 33.33%;
+  padding: 10px 5px;
+}
+
+.tablistactive {
+  background-color: #1B9BE9;
+  /* border: solid #ccc; */
+}

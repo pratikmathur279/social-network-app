@@ -13,7 +13,7 @@ const ProfileContainer = (props) => {
             <div className={classes.EditButton}>
                 <Button clicked={props.onClick}>Edit Profile</Button>
             </div>
-            <ProfileData profile={props.state.profile}/>
+            {/* <ProfileData profile={props.state.profile}/> */}
         </div>
     )
     }

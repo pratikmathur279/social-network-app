@@ -11,9 +11,7 @@ import Actions from '../../actions/Actions';
 import UserFeed from '../../components/Profile/UserFeed/UserFeed';
 import EditProfile from '../../components/Profile/EditProfile/EditProfile';
 
-import Tabs from '../../components/Tabs/Tabs';
-
-class ProfileBuilder extends Component {
+class MyProfileBuilder extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -170,26 +168,10 @@ class ProfileBuilder extends Component {
                             </Modal>
                         
                             <ProfileContainer loading={this.state.loading} onClick={this.onClick} state={this.state} />
-
-                            <div>
-                                <Tabs>
-                                    <div label="Notes" count={this.state.profile.feedCount}>
-                                        <UserFeed 
-                                            {...this.state}
-                                            deleteFeedHandler={this.deleteFeedHandler}
-                                        />
-                                    </div>
-                                    <div label="Followers" count={this.state.profile.followedLength}>
-                                    After &apos;while, <em>Crocodile</em>!
-                                    </div>
-                                    <div label="Following" count={this.state.profile.followingLength}>
-                                    Nothing to see here, this tab is <em>extinct</em>!
-                                    </div>
-                                </Tabs>
-                                </div>
-
-
-                            
+                            <UserFeed 
+                                {...this.state}
+                                deleteFeedHandler={this.deleteFeedHandler}
+                            />
                         </Auxiliary>
                     }  
                         
@@ -201,4 +183,4 @@ class ProfileBuilder extends Component {
     
 }
 
-export default ProfileBuilder;
+export default MyProfileBuilder;

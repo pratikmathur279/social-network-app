@@ -4,8 +4,7 @@ import classes from './ProfileDataItem.css';
 const ProfileDataItem = (props) => {
     return(
         <div className={classes.ProfileDataItem}>
-            <p>{props.count}</p>
-            <p>{props.value}</p>
+            <p onClick={props.setActiveTab} id={props.name} >{props.value}  {props.count}</p>
         </div>
     )
 }

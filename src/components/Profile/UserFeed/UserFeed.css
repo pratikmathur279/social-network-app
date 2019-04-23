@@ -1,5 +1,5 @@
 .UserFeed {
-    width: 60vw;
+    width: inherit;
     min-height: fit-content;
     display: block;
     margin: 0 auto;

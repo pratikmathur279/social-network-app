@@ -1,7 +1,7 @@
 .ProfileData {
     display: flex;
     /* margin: 100px; */
-    width: 100%;
+    width: inherit;
     margin-top: 30px;
     flex-direction: row;
     border-top: 0.5px solid grey;
@@ -9,10 +9,23 @@
     padding-top: 15px;
 }
 
+.ProfileDataAlign {
+    display: flex;
+    /* margin: 100px; */
+    width: 70%;
+    margin: 0 auto;
+    /* margin-top: 30px; */
+    flex-direction: row;
+}
+
 @media screen and (max-width: 500px){
     .ProfileData{
         /* margin: 30px 10px; */
-        width: 95%;
+        width: inherit;
         margin: 30px 10px 0 10px;
+    }
+
+    .ProfileDataAlign {
+        width: 100%;
     }
 }

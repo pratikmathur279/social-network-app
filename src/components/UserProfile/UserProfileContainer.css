@@ -35,7 +35,7 @@
 
 @media screen and (max-height: 900px){
     .UserProfileContainer {
-        height: 65vh;
+        height: inherit;
     }
 }
 

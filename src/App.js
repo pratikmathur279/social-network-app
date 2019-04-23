@@ -8,6 +8,7 @@ import AuthBuilder from './containers/AuthBuilder/AuthBuilder';
 import SocialNetworkBuilder from './containers/SocialNetworkBuilder/SocialNetworkBuilder';
 import RegisterBuilder from './containers/RegisterBuilder/RegisterBuilder';
 import ProfileBuilder from './containers/ProfileBuilder/ProfileBuilder';
+import MyProfileBuilder from './containers/MyProfileBuilder/MyProfileBuilder';
 import PeopleBuilder from './containers/PeopleBuilder/PeopleBuilder';
 import NotFoundComponent from './containers/NotFoundComponent/NotFoundComponent';
 import Logout from './components/Auth/Logout/Logout';
