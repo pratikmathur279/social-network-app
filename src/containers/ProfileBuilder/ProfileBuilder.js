@@ -10,6 +10,9 @@ import Modal from '../../components/UI/Modal/Modal';
 import Actions from '../../actions/Actions';
 import UserFeed from '../../components/Profile/UserFeed/UserFeed';
 import EditProfile from '../../components/Profile/EditProfile/EditProfile';
+import FollowerContainer from '../../components/Followers/FollowerContainer';
+import FollowingContainer from '../../components/Following/FollowingContainer';
+
 
 import Tabs from '../../components/Tabs/Tabs';
 
@@ -46,8 +49,12 @@ class ProfileBuilder extends Component {
             
             this.actions.userFollowingList(state.profile.email, (res)=> {
                 state.profile.followingLength = res.data.length;
+                state.profile.followingList = res.data;
+                console.log(state.profile.followingList);
                 this.actions.userFollowedList(state.profile.email, (res1)=>{
                     state.profile.followedLength = res1.data.length;
+                    state.profile.followedList = res1.data;
+                    console.log(state.profile.followedList);
                     this.actions.getUserFeed(state.profiledata.email, (res) => {
                         state.profile.feed = res;
                         state.profile.feedCount = res.length;
@@ -180,10 +187,10 @@ class ProfileBuilder extends Component {
                                         />
                                     </div>
                                     <div label="Followers" count={this.state.profile.followedLength}>
-                                    After &apos;while, <em>Crocodile</em>!
+                                        <FollowerContainer profile={this.state.profile} />
                                     </div>
                                     <div label="Following" count={this.state.profile.followingLength}>
-                                    Nothing to see here, this tab is <em>extinct</em>!
+                                        <FollowingContainer profile={this.state.profile} />
                                     </div>
                                 </Tabs>
                                 </div>

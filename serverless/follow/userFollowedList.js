@@ -9,6 +9,7 @@ module.exports.get = (event, context, callback) => {
     TableName: 'social-network-app-users',
   };
 
+  let finalList = [], tempList = [];
 console.log(event.pathParameters.email);
   // fetch todo from the database
   dynamoDb.scan(params, (error, result) => {
@@ -37,13 +38,21 @@ console.log(event.pathParameters.email);
 
             dynamoDb.scan(params1, (error, result) => {
                 const list = result.Items;
-                let finalList = [];
+
                 list.forEach((item)=> {
                     if(item.toId == user.id){
-                        finalList.push(item);
+                        tempList.push(item);
                     }
                 });
 
+                data.forEach((e1) => {
+                  tempList.forEach((temp) => {
+                    if(temp.fromId == e1.id){
+                      finalList.push(e1);
+                    }
+                  });
+                });
+                
                 const response = {
                     statusCode: 200,
                     headers: {

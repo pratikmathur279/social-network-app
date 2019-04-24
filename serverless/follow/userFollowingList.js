@@ -5,59 +5,57 @@ const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-depe
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.get = (event, context, callback) => {
-  const params = {
-    TableName: 'social-network-app-users',
-  };
-
+  
 console.log(event.pathParameters.email);
-  // fetch todo from the database
-  dynamoDb.scan(params, (error, result) => {
-    // handle potential errors
-    if (error) {
-      console.error(error);
-      callback(null, {
-        statusCode: error.statusCode || 501,
-        headers: { 'Content-Type': 'text/plain' },
-        body: 'Couldn\'t fetch the user item.',
-      });
-      return;
-    }
+  let finalList = [], tempList = [];
 
-    const data = (result.Items);
-    console.log(data);
-    let user;
-    data.forEach((element) => {
-        if(element.email == event.pathParameters.email){
-            user = element;
-            console.log(user);
+  //Fetch entire following list
+  const params1 = {
+    TableName: 'social-network-app-follow',
+  }
 
-            const params1 = {
-                TableName: 'social-network-app-follow',
+  dynamoDb.scan(params1, (error, result) => {
+    let list = result.Items;
+
+    const params = {
+      TableName: 'social-network-app-users',
+    };
+
+    dynamoDb.scan(params, (error, result1)=>{
+      let data = result1.Items;
+
+      data.forEach((element) => {
+        if(element.email === event.pathParameters.email){
+          let user = element;
+
+          list.forEach((item) => {
+            if(item.fromId == user.id){
+              tempList.push(item);
             }
-
-            dynamoDb.scan(params1, (error, result) => {
-                const list = result.Items;
-                let finalList = [];
-                list.forEach((item)=> {
-                    if(item.fromId == user.id){
-                        finalList.push(item);
-                    }
-                });
-
-                const response = {
-                    statusCode: 200,
-                    headers: {
-                      'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Credentials': true,
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(finalList),
-                  };
-                  callback(null, response);
-            });
+          }); 
+          console.log(tempList);
+          
         }
-    })
-    // create a response
-    
+      });
+
+      data.forEach((e1) => {
+        tempList.forEach((temp) => {
+          if(temp.toId == e1.id){
+            finalList.push(e1);
+          }
+        });
+      });
+
+      const response = {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(finalList),
+      };
+      callback(null, response);
+    });
   });
 };

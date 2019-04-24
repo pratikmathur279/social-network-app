@@ -39,24 +39,26 @@ class PeopleBuilder extends Component {
         else {
           state.loggedIn = false;
         }
-
-        this.actions.getAllPeople(user, (res)=>{
-            state.peopleList = res.data;
-            this.actions.userFollowingList(user, (res)=>{
-                state.followList = res.data;
-
-                for(let x in state.peopleList){
-                    for(let y in state.followList){
-                        if(state.peopleList[x].id == state.followList[y].toId){
-                            state.peopleList[x].followingUser = true;
+        this.actions.getUser(user, (res1) => {
+            state.currentUserData = res1;
+            console.log(res1);
+            this.actions.getAllPeople(user, (res)=>{
+                state.peopleList = res.data;
+                this.actions.userFollowingList(user, (res)=>{
+                    state.followList = res.data;
+                    console.log(state.followList);
+    
+                    for(let x in state.peopleList){
+                        for(let y in state.followList){
+                            if(state.peopleList[x].id == state.followList[y].id){
+                                state.peopleList[x].followingUser = true;
+                            }
                         }
                     }
-                }
-
-                this.setState(state);
+                    this.setState(state);
+                });                
             });
-            
-        });
+        });        
     }
 
     openModalHandler(){
@@ -69,11 +71,11 @@ class PeopleBuilder extends Component {
     FollowUserToggle(e){
         console.log(e.target.id);
         let state = Object.assign({}, this.state);
-        
+        console.log(state);
         for(let user in state.peopleList){
             if(state.peopleList[user].id == e.target.id){
                 state.peopleList[user].followingUser = !(state.peopleList[user].followingUser);
-                let currentUserId = state.followList[0].fromId;
+                let currentUserId = state.currentUserData.id;
                 if(state.peopleList[user].followingUser == true){
                     this.actions.followUser(currentUserId, state.peopleList[user].id, (data)=> {
                         this.setState(state);

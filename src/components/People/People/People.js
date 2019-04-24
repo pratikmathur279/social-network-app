@@ -15,7 +15,8 @@ const People = (props) => {
                         <p>{props.item.date}</p>
                     </div>
                 </div>
-                <div className={classes.FollowButton}>
+                {window.location.pathname == '/people' ? 
+                    <div className={classes.FollowButton}>
                     {props.item.followingUser ? 
                         <Button followingUser={props.item.followingUser} clicked={props.FollowUserToggle} id={props.item.id}>Following</Button>
                     :
@@ -23,6 +24,9 @@ const People = (props) => {
                      }
                     
                 </div>
+                :
+                " " }
+                
             </div>
             
         </div>

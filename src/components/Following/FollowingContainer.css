@@ -1,0 +1,11 @@
+.Followers h3 {
+    text-align: center;
+    margin: 7px 0
+}
+
+.FollowingContainer {
+    padding: 15px 20px;
+    background: #ECECEC;
+    min-height: 100px;
+    margin: 0 10px;
+}
