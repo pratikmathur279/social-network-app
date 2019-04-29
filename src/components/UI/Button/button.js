@@ -4,7 +4,6 @@ import classes from './button.css';
 
 const button = (props) => 
 {
-    console.log(props.followingUser);
     if(props.followingUser){
         return(
             <button

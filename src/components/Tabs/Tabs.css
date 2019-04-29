@@ -1,7 +1,7 @@
 .tabs {
   display: block;
   margin: 0 auto;
-  width: 64vw;
+  width: 63.5vw;
   padding: 0 25px;
 }
 
@@ -22,6 +22,18 @@
   .tablistactive {
     background-color: red;
   }
+
+  .tablistactive:after {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 15px solid #e5e5e5;
+      content: " ";
+      position: absolute;
+      bottom: -15px;
+      left: 35%;
+    }
 
   .TabContent {
     margin: 20px 0;

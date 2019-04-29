@@ -41,13 +41,11 @@ class PeopleBuilder extends Component {
         }
         this.actions.getUser(user, (res1) => {
             state.currentUserData = res1;
-            console.log(res1);
             this.actions.getAllPeople(user, (res)=>{
                 state.peopleList = res.data;
                 this.actions.userFollowingList(user, (res)=>{
                     state.followList = res.data;
-                    console.log(state.followList);
-    
+                    
                     for(let x in state.peopleList){
                         for(let y in state.followList){
                             if(state.peopleList[x].id == state.followList[y].id){
@@ -69,9 +67,7 @@ class PeopleBuilder extends Component {
     }
 
     FollowUserToggle(e){
-        console.log(e.target.id);
         let state = Object.assign({}, this.state);
-        console.log(state);
         for(let user in state.peopleList){
             if(state.peopleList[user].id == e.target.id){
                 state.peopleList[user].followingUser = !(state.peopleList[user].followingUser);
@@ -109,7 +105,6 @@ class PeopleBuilder extends Component {
                 state.profile.followingLength = res.data.length;
                 this.actions.userFollowedList(state.profile.email, (res1)=>{
                     state.profile.followedLength = res1.data.length;
-                    console.log(state.profile.email);
                     this.actions.getUserFeed(state.profile.email, (data)=> {
                         state.profile.feed = data;
                         if(data.length == 0){

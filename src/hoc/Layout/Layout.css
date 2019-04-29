@@ -2,3 +2,7 @@
     margin-top: 0px;
     
 }
+.ContentLayout{
+    display: flex;
+    flex-direction: column;
+}

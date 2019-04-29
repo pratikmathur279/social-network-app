@@ -50,11 +50,9 @@ class ProfileBuilder extends Component {
             this.actions.userFollowingList(state.profile.email, (res)=> {
                 state.profile.followingLength = res.data.length;
                 state.profile.followingList = res.data;
-                console.log(state.profile.followingList);
                 this.actions.userFollowedList(state.profile.email, (res1)=>{
                     state.profile.followedLength = res1.data.length;
                     state.profile.followedList = res1.data;
-                    console.log(state.profile.followedList);
                     this.actions.getUserFeed(state.profiledata.email, (res) => {
                         state.profile.feed = res;
                         state.profile.feedCount = res.length;

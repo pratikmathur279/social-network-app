@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary';
 
 import Layout from '../../hoc/Layout/Layout';
-// import pratik from '../../assets/Images/pratik.jpg';
 import { Redirect } from 'react-router-dom';
 
 import Actions from '../../actions/Actions';

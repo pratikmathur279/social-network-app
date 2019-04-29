@@ -6,6 +6,7 @@ import Loading from '../../components/UI/Loading/Loading';
 import Actions from '../../actions/Actions';
 import Modal from '../../components/UI/Modal/Modal';
 import CreateNote from '../../components/CreateNote/CreateNote';
+import Chat from '../../components/Chat/Chat';
 import { Redirect } from 'react-router-dom';
 
 import Homepage from '../../components/Homepage/Homepage';
@@ -144,7 +145,10 @@ class SocialNetworkBuilder extends Component {
                     <Layout loggedIn={this.state.loggedIn} />
                     {this.state.loading ? <Loading /> 
                     :
+                    
                         <Auxiliary>
+                            
+
                             <div className="content">
                             {this.getSession()}
 

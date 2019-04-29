@@ -1,0 +1,7 @@
+.Chat {
+    height: 100%;
+    position: fixed;
+    right: 0;
+    width: 20%;
+    /* z-index: 200; */
+}

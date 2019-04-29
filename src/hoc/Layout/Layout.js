@@ -4,10 +4,12 @@ import Auxiliary from '../Auxiliary';
 import classes from './Layout.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Chat from '../../components/Chat/Chat';
 
 class Layout extends Component {
     constructor(props){
         super(props);
+        console.log(props);
         this.state = {
             showSideDrawer: false,
             showAboutDrawer: false
@@ -55,9 +57,13 @@ class Layout extends Component {
                     open={this.state.showSideDrawer}
                     closed={this.sideDrawerClosedHandler} 
                     loggedIn={this.state.loggedIn} />
-                <main className={classes.Content}>
-                    {this.props.children}
-                </main>
+                <div className={classes.ContentLayout}>
+                    {/* <Chat /> */}
+                    <main className={classes.Content}>
+                        {this.props.children}
+                    </main>
+                </div>
+                
             </Auxiliary>
         )
     }

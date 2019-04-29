@@ -9,9 +9,38 @@
 .tablistitem {
   width: 33.33%;
   padding: 10px 5px;
+  /* border: 0.5px solid grey; */  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.tablistitem span {
+  margin-left: 5px;
+  color: #89919c;
+  margin-top: 1px;
+}
+
+.tablistitem:first-of-type{
+  border-left: 1px solid #ccc;
+}
+
+.tablistitem:last-of-type{
+  border-right: 1px solid #ccc;
 }
 
 .tablistactive {
   background-color: #1B9BE9;
   /* border: solid #ccc; */
+}
+
+.tablistactive::after {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #e5e5e5;
+  content: " ";
+  position: absolute;
+  margin-top: 29px;
+  margin-left: -55px;
 }
