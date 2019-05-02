@@ -7,16 +7,21 @@
 
 .Form {
     display: block;
-    margin: 0 auto;
-    padding: 0 12px;
-    width: 34vw;
+    margin: 20px auto;
+    padding: 10px 18px;
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 8%;
 }
 
 .RegisterLink {
     display: block;
     margin: 0 auto;
-    width: fit-content;
-    padding: 10px 0;
+    margin-top: 25px;
+    width: 100%;
+    border-top: 1px solid black;
+    text-align: center;
+    padding: 20px 0;
 }
 
 .Form button {
@@ -53,6 +58,5 @@
     .Form {
         width: fit-content;
         margin-left: 0;
-        width: 100%;
     }
 }

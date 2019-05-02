@@ -7,7 +7,7 @@
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     left: 4%;
-    height: 83%;
+    height: 80vh;
     top: 11%;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
@@ -21,9 +21,9 @@
 
 @media (min-width: 600px) {
     .Modal {
-        width: 70%;
+        width: 70% ;
         left: calc(35% - 250px);
-        height: 80%;
+        height: 90vh;
         top: 0%;
     }
 }

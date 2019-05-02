@@ -40,6 +40,7 @@ const bodyParser = require('body-parser');
     app.listen(port, () => console.log(`Server listening on port ${port}`));
 
     app.post('/image-upload', upload.single('myImage'), (req, res) => {
+      console.log('here');
       /*
         We now have a new req.file object here. At this point the file has been saved
         and the req.file.filename value will be the name returned by the

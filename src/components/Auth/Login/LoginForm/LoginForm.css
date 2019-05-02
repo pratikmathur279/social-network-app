@@ -3,18 +3,36 @@
     text-align: center;
 }
 
+.LoginForm {
+    min-width: fit-content;
+}
+
 .Form {
     display: block;
     margin: 0 auto;
-    width: 34vw;
-    padding: 0 12px;
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 8%;
+    /* align-self: auto; */
+    padding: 10px 20px;
+    height: fit-content;
+}
+
+.Form input {
+    display: flex;
+    flex-direction: row;
+    width: 18vw;
 }
 
 .RegisterLink {
     display: block;
+    border-top: 1px solid black;
     margin: 0 auto;
-    width: fit-content;
-    padding: 10px 0;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    
 }
 
 .Form button {
@@ -46,9 +64,14 @@
     }
 
     .Form {
-        width: fit-content;
         margin-left: 0;
-        width: 100%;
+        width: inherit;
+        padding: 20px;
+    }
+    .Form input {
+        display: flex;
+        flex-direction: row;
+        width: 70vw;
     }
 }
 

@@ -1,11 +1,8 @@
 .RegisterContainer {
-    /* text-align: center; */
     align-self: center;    
     display: block;
     margin: 55px auto;
-    width: 35%;
-    /* border-width: thin;
-    border: 0.5px solid lightslategrey; */
+    width: fit-content;
     padding: 0px 20px;
 }
 
